@@ -1,7 +1,7 @@
 COMP	= c++
-NAME	= violence
-SRCS	= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+NAME	= sed
+SRCS	= main.cpp
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g3
 
 all: $(NAME)
 
