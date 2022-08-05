@@ -1,6 +1,6 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string &human_name)
+HumanB::HumanB(std::string human_name)
 {
     this->name = human_name;
 }

@@ -1,6 +1,6 @@
 COMP	= c++
-NAME	= sed
-SRCS	= main.cpp
+NAME	= harl
+SRCS	= main.cpp Harl.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
