@@ -1,7 +1,7 @@
-COMP	= g++
+COMP	= c++
 NAME	= account
 FLAGS	= -Wall -Wextra -Werror -std=c++98
-SRCS	= main.cpp Account.cpp
+SRCS	= tests.cpp Account.cpp
 
 all: $(NAME)
 

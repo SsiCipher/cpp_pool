@@ -1,3 +1,6 @@
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 #include <iostream>
 
 class Contact {
@@ -10,3 +13,5 @@ class Contact {
 
 		bool	isEmpty();
 };
+
+#endif
