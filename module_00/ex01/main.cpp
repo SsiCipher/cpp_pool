@@ -1,43 +1,42 @@
 #include "PhoneBook.hpp"
 
-Contact read_contact()
+void read_contact(Contact &contact)
 {
-	Contact c;
-
 	std::cout << "Enter first_name: ";
-	std::cin >> c.first_name;
+	std::getline(std::cin, contact.first_name);
 	std::cout << "Enter last_name: ";
-	std::cin >> c.last_name;
+	std::getline(std::cin, contact.last_name);
 	std::cout << "Enter nickname: ";
-	std::cin >> c.nickname;
+	std::getline(std::cin, contact.nickname);
 	std::cout << "Enter phone_number: ";
-	std::cin >> c.phone_number;
+	std::getline(std::cin, contact.phone_number);
 	std::cout << "Enter darkest_secret: ";
-	std::cin >> c.darkest_secret;
-
-	return (c);
+	std::getline(std::cin, contact.darkest_secret);
 }
 
 int main(void)
 {
 	std::string	cmd;
 	PhoneBook	book;
+	Contact		new_contact;
 
-	while (true)
+	std::cout << "Enter a command (ADD|SEARCH|EXIT): ";
+	while (std::getline(std::cin, cmd))
 	{
-		std::cout << "Enter a command (ADD|SEARCH|EXIT): ";
-		std::cin >> cmd;
+		std::cout << "\n";
 		if (cmd == "ADD")
 		{
-			Contact c = read_contact();
-			book.add_contact(c);
+			read_contact(new_contact);
+			book.add_contact(new_contact);
 		}
 		else if (cmd == "SEARCH")
+		{
+			book.display_contacts();
 			book.search_by_index();
+		}
 		else if (cmd == "EXIT")
-			return (0);
-		std::cout << "\n";
+			break;
+		std::cout << "\nEnter a command (ADD|SEARCH|EXIT): ";
 	}
-
 	return (0);
 }

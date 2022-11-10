@@ -5,71 +5,79 @@ PhoneBook::PhoneBook()
 	this->_contacts_count = 0;
 }
 
-void	PhoneBook::add_contact(Contact &obj)
+void	PhoneBook::add_contact(Contact &new_contact)
 {
 	int curr_i = this->_contacts_count % 8;
 
-	this->_contacts[curr_i].first_name = obj.first_name;
-	this->_contacts[curr_i].last_name = obj.last_name;
-	this->_contacts[curr_i].nickname = obj.nickname;
-	this->_contacts[curr_i].phone_number = obj.phone_number;
-	this->_contacts[curr_i].darkest_secret = obj.darkest_secret;
-
+	if (new_contact.isEmpty())
+		return;
+	this->_contacts[curr_i].first_name = new_contact.first_name;
+	this->_contacts[curr_i].last_name = new_contact.last_name;
+	this->_contacts[curr_i].nickname = new_contact.nickname;
+	this->_contacts[curr_i].phone_number = new_contact.phone_number;
+	this->_contacts[curr_i].darkest_secret = new_contact.darkest_secret;
 	this->_contacts_count += 1;
 }
 
 void	PhoneBook::_print_field(std::string &value, size_t limit)
 {
-	int spaces = value.size() < limit ? limit - (value.size() % limit) : 0;
+	int empty_spaces_count;
+
+	empty_spaces_count = value.length() < limit ? limit - (value.length() % limit) : 0;
 	if (value.size() > limit)
-		std::cout << std::string(spaces, ' ') << value.substr(0, limit - 1) << ".";
+		std::cout << std::string(empty_spaces_count, ' ') << value.substr(0, limit - 1) << ".";
 	else
-		std::cout << std::string(spaces, ' ') << value.substr(0, limit);
+		std::cout << std::string(empty_spaces_count, ' ') << value.substr(0, limit);
 }
 
-void	PhoneBook::_display_contacts(void)
+void	PhoneBook::display_contacts(void)
 {
+	Contact	current_contact;
+
 	if (this->_contacts_count == 0)
-		std::cout << "|        The phonebook is empty        |\n";
+	{
+		std::cout << "--------------------------------------------\n";
+		std::cout << "|          The phonebook is empty          |\n";
+		std::cout << "--------------------------------------------\n";
+	}
 	for (int i = 0; i < this->_contacts_count; i++)
 	{
-		Contact curr = this->_contacts[i];
+		current_contact = this->_contacts[i];
+		std::cout << "---------------------------------------------" << "\n";
 		std::cout << "|" << std::setw(10) << i;
 		std::cout << "|";
-		this->_print_field(curr.first_name, 10);
+		this->_print_field(current_contact.first_name, 10);
 		std::cout << "|";
-		this->_print_field(curr.last_name, 10);
+		this->_print_field(current_contact.last_name, 10);
 		std::cout << "|";
-		this->_print_field(curr.nickname, 10);
+		this->_print_field(current_contact.nickname, 10);
 		std::cout << "|" << "\n";
+		std::cout << "---------------------------------------------" << "\n";
 	}
 }
 
 void	PhoneBook::search_by_index(void)
 {
 	int index = -1;
-	
-	this->_display_contacts();
-	while (index < 0 || index > this->_contacts_count)
+
+	if (this->_contacts_count == 0)
+		return;
+	while (!std::cin.eof() && (index < 0 || index > this->_contacts_count - 1))
 	{
-		std::cout << "Enter index: ";
+		std::cout << "Enter a contact index: ";
 		std::cin >> index;
-		if (index < 0 || index > this->_contacts_count)
+		if (index < 0 || index > this->_contacts_count - 1)
 			std::cout << "No contacts found at index: " << index << "\n";
 	}
-
-	std::cout << "Contact at index: " << index << "\n";
-	Contact &curr = this->_contacts[index];
-	std::cout << "|" << std::setw(20) << index;
-	std::cout << "|";
-	this->_print_field(curr.first_name, 20);
-	std::cout << "|";
-	this->_print_field(curr.last_name, 20);
-	std::cout << "|";
-	this->_print_field(curr.nickname, 20);
-	std::cout << "|";
-	this->_print_field(curr.phone_number, 20);
-	std::cout << "|";
-	this->_print_field(curr.darkest_secret, 20);
-	std::cout << "|" << "\n";
+	if (index != -1)
+	{
+		Contact &curr = this->_contacts[index];
+		std::cout << "\n";
+		std::cout << "Index: " << index << "\n";
+		std::cout << "first_name: " << curr.first_name << "\n";
+		std::cout << "last_name: " << curr.last_name << "\n";
+		std::cout << "nickname: " << curr.nickname << "\n";
+		std::cout << "phone_number: " << curr.phone_number << "\n";
+		std::cout << "darkest_secret: " << curr.darkest_secret << "\n";
+	}
 }
