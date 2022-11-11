@@ -23,6 +23,7 @@ int main(void)
 	std::cout << "Enter a command (ADD|SEARCH|EXIT): ";
 	while (std::getline(std::cin, cmd))
 	{
+		std::cout << cmd;
 		std::cout << "\n";
 		if (cmd == "ADD")
 		{

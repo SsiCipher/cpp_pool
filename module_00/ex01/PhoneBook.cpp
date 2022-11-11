@@ -58,7 +58,7 @@ void	PhoneBook::display_contacts(void)
 
 void	PhoneBook::search_by_index(void)
 {
-	int index = -1;
+	int	index = -1;
 
 	if (this->_contacts_count == 0)
 		return;
@@ -66,6 +66,8 @@ void	PhoneBook::search_by_index(void)
 	{
 		std::cout << "Enter a contact index: ";
 		std::cin >> index;
+		std::cin.clear();
+		std::cin.ignore();
 		if (index < 0 || index > this->_contacts_count - 1)
 			std::cout << "No contacts found at index: " << index << "\n";
 	}

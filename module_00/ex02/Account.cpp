@@ -10,7 +10,6 @@ int	Account::_totalNbWithdrawals = 0;
 
 Account::Account(void)
 {
-
 }
 
 Account::Account(int initial_deposit)
@@ -23,7 +22,6 @@ Account::Account(int initial_deposit)
 	// total
 	Account::_nbAccounts += 1;
 	Account::_totalAmount += initial_deposit;
-
 	// msg
 	std::cout << "index:" << Account::_accountIndex << ";amount:" << Account::_amount << ";created" << std::endl;
 }
