@@ -22,14 +22,14 @@ bool    is_empty(std::string arg)
 
 int main(int argc, char *argv[])
 {
-	std::string     line;
-	std::string     outfileName;
-	std::ifstream   infile;
-	std::ofstream   outfile;
+	std::string		line;
+	std::string		outfileName;
+	std::ifstream	infile;
+	std::ofstream	outfile;
 
 	if (argc != 4 || is_empty(argv[2]) || is_empty(argv[3]))
 	{
-		std::cout << "USAGE: ./sed filename s1 s2\n";
+		std::cout << "USAGE: ./sed <filename> <old_string> <new_string>\n";
 		return (1);
 	}
 	else
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 		infile.open(argv[1]);
 		if (!infile.is_open())
 		{
-			std::cout << "ERROR: Failed to open file \"" << argv[1] << "\"\n";
+			std::cout << "ERROR: Failed to open file: " << argv[1] << "\n";
 			return (1);
 		}
 		else
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 			outfile.open(outfileName.c_str());
 			if (!outfile.is_open())
 			{
-				std::cout << "ERROR: Failed to open file \"" << outfileName << "\"\n";
+				std::cout << "ERROR: Failed to open file: " << outfileName << "\n";
 				return (1);
 			}
 			else

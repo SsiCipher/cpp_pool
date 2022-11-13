@@ -6,11 +6,5 @@ int main(int argc, char *argv[])
 
 	if (argc > 1)
 		h.complain(argv[1]);
-
-	// h.complain("DEBUG");
-	// h.complain("INFO");
-	// h.complain("WARNING");
-	// h.complain("ERROR");
-
 	return (0);
 }
