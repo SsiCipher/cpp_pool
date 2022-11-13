@@ -5,7 +5,7 @@ FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) HumanA.hpp HumanB.hpp Weapon.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:

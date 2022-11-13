@@ -5,6 +5,10 @@ HumanB::HumanB(std::string human_name)
     this->name = human_name;
 }
 
+HumanB::~HumanB(void)
+{
+}
+
 void HumanB::setWeapon(Weapon &human_weapon)
 {
     this->weapon = human_weapon;

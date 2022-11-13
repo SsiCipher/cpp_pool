@@ -5,7 +5,7 @@ void	randomChump(std::string name);
 
 int main(void)
 {
-	std::string zombieName = "ZOMO";
+	std::string zombieName = "MONK";
 
 	// Zombie on the stack
 	// allocated and deallocated inside scope {}
