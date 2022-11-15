@@ -1,6 +1,6 @@
 COMP	= c++
 NAME	= clapTrap
-SRCS	= ClapTrap.cpp
+SRCS	= ClapTrap.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
