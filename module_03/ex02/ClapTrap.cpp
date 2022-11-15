@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap()
 {
-	std::cout << "Default constructor has been called!" << std::endl;
+	std::cout << "[ScavTrap] Default constructor has been called!" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const &name)
@@ -11,23 +11,23 @@ ClapTrap::ClapTrap(std::string const &name)
 	this->_hitPoints = 10;
 	this->_energyPoints = 10;
 	this->_attackDamage = 0;
-	std::cout << "Constructor has been called!" << std::endl;
+	std::cout << "[ClapTrap] Constructor has been called!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor has been called!" << std::endl;
+	std::cout << "[ClapTrap] Destructor has been called!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &obj)
 {
 	*this = obj;
-	std::cout << "Copy constructor has been called!" << std::endl;
+	std::cout << "[ClapTrap] Copy constructor has been called!" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 {
-	std::cout << "Copy assignment operator has been called!" << std::endl;
+	std::cout << "[ClapTrap] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
 		this->_name = obj._name;

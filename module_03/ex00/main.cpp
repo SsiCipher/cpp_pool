@@ -2,17 +2,9 @@
 
 int main(void)
 {
-	std::string clapTrap1Name = "Srghini";
-	std::string clapTrap2Name = "Hmed Lkatourza";
+	ClapTrap clapTrap1("clapTrap1");
+	ClapTrap clapTrap2("clapTrap2");
 
-	ClapTrap clapTrap1(clapTrap1Name);
-	ClapTrap clapTrap2(clapTrap2Name);
-
-	clapTrap1.attack(clapTrap2Name);
-	clapTrap2.takeDamage(10);
-	clapTrap2.takeDamage(10);
-	clapTrap2.beRepaired(10);
-	clapTrap2.takeDamage(10);
-
+	clapTrap1.attack("clapTrap2");
 	return (0);
 }
