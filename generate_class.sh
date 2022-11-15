@@ -32,22 +32,23 @@ cat << EOF > $(pwd)/$CLASS_NAME.cpp
 
 $CLASS_NAME::$CLASS_NAME(void)
 {
-	std::cout << "Constructor has been called!" << std::endl;
+	std::cout << "[$CLASS_NAME] Constructor has been called!" << std::endl;
 }
 
 $CLASS_NAME::~$CLASS_NAME()
 {
-	std::cout << "Destructor has been called!" << std::endl;
+	std::cout << "[$CLASS_NAME] Destructor has been called!" << std::endl;
 }
 
 $CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &obj)
 {
 	*this = obj;
-	std::cout << "Copy constructor has been called!" << std::endl;
+	std::cout << "[$CLASS_NAME] Copy constructor has been called!" << std::endl;
 }
 
 $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &obj)
 {
+	std::cout << "[$CLASS_NAME] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
 	}
