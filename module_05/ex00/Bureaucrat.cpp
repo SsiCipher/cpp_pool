@@ -1,9 +1,8 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned short grade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned short grade): name(name)
 {
 	std::cout << "[Bureaucrat] Constructor has been called!" << std::endl;
-	this->name = name;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException;
 	else if (grade > 150)
@@ -17,10 +16,10 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "[Bureaucrat] Destructor has been called!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+Bureaucrat::Bureaucrat(const Bureaucrat &obj): name(obj.name)
 {
-	*this = obj;
 	std::cout << "[Bureaucrat] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
@@ -28,18 +27,17 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
 	std::cout << "[Bureaucrat] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
-		this->name = obj.name;
 		this->grade = obj.grade;
 	}
 	return (*this);
 }
 
-std::string	Bureaucrat::getName()
+const std::string	Bureaucrat::getName() const
 {
 	return (this->name);
 }
 
-unsigned short	Bureaucrat::getGrade()
+unsigned short	Bureaucrat::getGrade() const
 {
 	return (this->grade);
 }
@@ -58,4 +56,9 @@ void	Bureaucrat::decrementGrade()
 		throw Bureaucrat::GradeTooLowException;
 	else
 		this->grade += 1;
+}
+
+std::ostream &operator<< (std::ostream &out, const Bureaucrat &c)
+{
+	std::cout << c.getName() << ", bureaucrat grade " << c.getGrade() << std::endl;
 }

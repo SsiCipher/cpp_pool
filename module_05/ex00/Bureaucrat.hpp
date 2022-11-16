@@ -25,7 +25,7 @@ class HighException: public std::exception
 class Bureaucrat
 {
 	private:
-		std::string		name;
+		const std::string		name;
 		unsigned short	grade;
 		LowException	GradeTooLowException;
 		HighException	GradeTooHighException;
@@ -36,10 +36,12 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat &operator=(const Bureaucrat &obj);
 
-		std::string		getName(void);
-		unsigned short	getGrade(void);
-		void			incrementGrade(void);
-		void			decrementGrade(void);
+		const std::string		getName(void) const;
+		unsigned short			getGrade(void) const;
+		void					incrementGrade(void);
+		void					decrementGrade(void);
 };
+
+std::ostream &operator<< (std::ostream &out, const Bureaucrat &c);
 
 #endif

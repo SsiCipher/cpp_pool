@@ -11,7 +11,7 @@ void    replace_str(std::string &line, std::string s1, std::string s2)
 	{
 		line.erase(pos, s1.length());
 		line.insert(pos, s2);
-		pos = line.find(s1, pos);
+		pos = line.find(s1, pos + s2.length());
 	}
 }
 
