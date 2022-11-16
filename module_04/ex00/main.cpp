@@ -16,6 +16,10 @@ int main(void)
 	j->makeSound();
 	meta->makeSound();
 
+	delete meta;
+	delete i;
+	delete j;
+
 	std::cout << "\n------ Wrong tests ------\n" << std::endl;
 
 	const WrongAnimal* wrongMeta = new WrongAnimal();
@@ -23,5 +27,8 @@ int main(void)
 	
 	wrongMeta->makeSound();
 	wrongCat->makeSound();
+	
+	delete wrongMeta;
+	delete wrongCat;
 	return 0;
 }

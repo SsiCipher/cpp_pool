@@ -8,7 +8,7 @@ class Cat: public Animal
 {
 	public:
 		Cat(void);
-		~Cat(void);
+		virtual ~Cat(void);
 		Cat(const Cat &obj);
 		Cat &operator=(const Cat &obj);
 
