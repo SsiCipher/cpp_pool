@@ -2,15 +2,15 @@
 
 int main(void)
 {
-    Bureaucrat trump("trump", 150);
 
     try
     {
-        trump.decrementGrade();
+        Bureaucrat trump("trump", 200);
+        // trump.incrementGrade();
     }
     catch(std::exception& e)
     {
-        std::cerr << "Exception caught" << std::endl;
+        std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
     return (0);

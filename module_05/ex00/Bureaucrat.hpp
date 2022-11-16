@@ -4,21 +4,37 @@
 #include <iostream>
 #include <exception>
 
+class LowException: public std::exception
+{
+    public:
+		const char *what() const throw ()
+		{
+        	return "The given grade is too low";
+    	}
+};
+
+class HighException: public std::exception
+{
+    public:
+		const char *what() const throw ()
+		{
+        	return "The given grade is too high";
+    	}
+};
+
 class Bureaucrat
 {
 	private:
 		std::string		name;
 		unsigned short	grade;
-		std::exception	GradeTooLowException;
-		std::exception	GradeTooHighException;
+		LowException	GradeTooLowException;
+		HighException	GradeTooHighException;
 
 	public:
 		Bureaucrat(const std::string name, unsigned short grade);
 		~Bureaucrat(void);
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat &operator=(const Bureaucrat &obj);
-
-
 
 		std::string		getName(void);
 		unsigned short	getGrade(void);
