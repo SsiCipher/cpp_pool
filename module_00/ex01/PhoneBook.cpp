@@ -16,7 +16,8 @@ void	PhoneBook::add_contact(Contact &new_contact)
 	this->_contacts[curr_i].nickname = new_contact.nickname;
 	this->_contacts[curr_i].phone_number = new_contact.phone_number;
 	this->_contacts[curr_i].darkest_secret = new_contact.darkest_secret;
-	this->_contacts_count += 1;
+	if (this->_contacts_count != 8)
+		this->_contacts_count += 1;
 }
 
 void	PhoneBook::_print_field(std::string &value, size_t limit)
@@ -44,7 +45,7 @@ void	PhoneBook::display_contacts(void)
 	{
 		current_contact = this->_contacts[i];
 		std::cout << "---------------------------------------------" << "\n";
-		std::cout << "|" << std::setw(10) << i;
+		std::cout << "|" << std::setw(10) << i + 1;
 		std::cout << "|";
 		this->_print_field(current_contact.first_name, 10);
 		std::cout << "|";
@@ -58,24 +59,23 @@ void	PhoneBook::display_contacts(void)
 
 void	PhoneBook::search_by_index(void)
 {
-	int	index = -1;
+	int			i;
+	std::string	index;
 
 	if (this->_contacts_count == 0)
+		return ;
+	std::cout << "Enter a contact index: ";
+	std::getline(std::cin, index);
+	if (std::cin.eof())
 		return;
-	while (!std::cin.eof() && (index < 0 || index > this->_contacts_count - 1))
+	i = atoi(index.c_str());
+	if (i <= 0 || i > this->_contacts_count)
+		std::cout << "No contacts found at index: " << index << "\n";
+	else
 	{
-		std::cout << "Enter a contact index: ";
-		std::cin >> index;
-		std::cin.clear();
-		std::cin.ignore();
-		if (index < 0 || index > this->_contacts_count - 1)
-			std::cout << "No contacts found at index: " << index << "\n";
-	}
-	if (index != -1)
-	{
-		Contact &curr = this->_contacts[index];
+		Contact &curr = this->_contacts[i - 1];
 		std::cout << "\n";
-		std::cout << "Index: " << index << "\n";
+		std::cout << "Index: " << i << "\n";
 		std::cout << "first_name: " << curr.first_name << "\n";
 		std::cout << "last_name: " << curr.last_name << "\n";
 		std::cout << "nickname: " << curr.nickname << "\n";
