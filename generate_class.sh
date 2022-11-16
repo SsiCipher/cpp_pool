@@ -1,59 +1,60 @@
 #!/usr/bin/bash
 
-CLASS_NAME=${1^}
+CLASSNAME_CAPITAL="$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"
+CLASSNAME_UPPER=$(echo $1 | tr '[:lower:]' '[:upper:]')
 
-if [[ -n $CLASS_NAME ]]; then
-	touch $(pwd)/$CLASS_NAME.{hpp,cpp}
-	echo "Created files $CLASS_NAME.cpp & $CLASS_NAME.hpp"
+if [[ -n $CLASSNAME_CAPITAL ]]; then
+	touch $(pwd)/$CLASSNAME_CAPITAL.{hpp,cpp}
+	echo "Created files $CLASSNAME_CAPITAL.cpp & $CLASSNAME_CAPITAL.hpp"
 
-cat << EOF > $(pwd)/$CLASS_NAME.hpp
-#ifndef ${CLASS_NAME^^}_HPP
-#define ${CLASS_NAME^^}_HPP
+cat << EOF > $(pwd)/$CLASSNAME_CAPITAL.hpp
+#ifndef ${CLASSNAME_UPPER}_HPP
+#define ${CLASSNAME_UPPER}_HPP
 
 #include <iostream>
 
-class $CLASS_NAME
+class $CLASSNAME_CAPITAL
 {
 	private:
 
 	public:
-		$CLASS_NAME(void);
-		~$CLASS_NAME(void);
-		$CLASS_NAME(const $CLASS_NAME &obj);
-		$CLASS_NAME &operator=(const $CLASS_NAME &obj);
+		$CLASSNAME_CAPITAL(void);
+		~$CLASSNAME_CAPITAL(void);
+		$CLASSNAME_CAPITAL(const $CLASSNAME_CAPITAL &obj);
+		$CLASSNAME_CAPITAL &operator=(const $CLASSNAME_CAPITAL &obj);
 };
 
 #endif
 EOF
-	echo "Added class definition to $CLASS_NAME.hpp"
+	echo "Added class definition to $CLASSNAME_CAPITAL.hpp"
 
-cat << EOF > $(pwd)/$CLASS_NAME.cpp
-#include "$CLASS_NAME.hpp"
+cat << EOF > $(pwd)/$CLASSNAME_CAPITAL.cpp
+#include "$CLASSNAME_CAPITAL.hpp"
 
-$CLASS_NAME::$CLASS_NAME(void)
+$CLASSNAME_CAPITAL::$CLASSNAME_CAPITAL(void)
 {
-	std::cout << "[$CLASS_NAME] Constructor has been called!" << std::endl;
+	std::cout << "[$CLASSNAME_CAPITAL] Constructor has been called!" << std::endl;
 }
 
-$CLASS_NAME::~$CLASS_NAME()
+$CLASSNAME_CAPITAL::~$CLASSNAME_CAPITAL()
 {
-	std::cout << "[$CLASS_NAME] Destructor has been called!" << std::endl;
+	std::cout << "[$CLASSNAME_CAPITAL] Destructor has been called!" << std::endl;
 }
 
-$CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &obj)
+$CLASSNAME_CAPITAL::$CLASSNAME_CAPITAL(const $CLASSNAME_CAPITAL &obj)
 {
 	*this = obj;
-	std::cout << "[$CLASS_NAME] Copy constructor has been called!" << std::endl;
+	std::cout << "[$CLASSNAME_CAPITAL] Copy constructor has been called!" << std::endl;
 }
 
-$CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &obj)
+$CLASSNAME_CAPITAL &$CLASSNAME_CAPITAL::operator=(const $CLASSNAME_CAPITAL &obj)
 {
-	std::cout << "[$CLASS_NAME] Copy assignment operator has been called!" << std::endl;
+	std::cout << "[$CLASSNAME_CAPITAL] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
 	}
 	return (*this);
 }
 EOF
-	echo "Added class declaration to $CLASS_NAME.cpp"
+	echo "Added class declaration to $CLASSNAME_CAPITAL.cpp"
 fi
