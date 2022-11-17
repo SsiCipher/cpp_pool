@@ -3,27 +3,28 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
+
+class LowException: public std::exception
+{
+    public:
+		const char *what() const throw ()
+		{
+        	return "The given grade is too low";
+    	}
+};
+
+class HighException: public std::exception
+{
+    public:
+		const char *what() const throw ()
+		{
+        	return "The given grade is too high";
+    	}
+};
 
 class Bureaucrat
 {
-	class LowException: public std::exception
-	{
-		public:
-			const char *what() const throw ()
-			{
-				return "The given grade is too low";
-			}
-	};
-
-	class HighException: public std::exception
-	{
-		public:
-			const char *what() const throw ()
-			{
-				return "The given grade is too high";
-			}
-	};
-
 	private:
 		const std::string		name;
 		unsigned short	grade;
@@ -41,6 +42,8 @@ class Bureaucrat
 		unsigned short			getGrade(void) const;
 		void					incrementGrade(void);
 		void					decrementGrade(void);
+
+		void					signForm(const Form &form);
 };
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &c);

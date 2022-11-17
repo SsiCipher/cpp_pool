@@ -2,16 +2,19 @@
 
 int main(void)
 {
-
-    try
-    {
-        Bureaucrat trump("trump", 200);
-        // trump.incrementGrade();
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
-    }
-
-    return (0);
+	try
+	{
+		Bureaucrat president("Donald Trump", 160);
+		president.decrementGrade();
+		president.decrementGrade();
+		president.decrementGrade();
+		president.decrementGrade();
+		president.decrementGrade();
+		std::cout << president << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	return (0);
 }

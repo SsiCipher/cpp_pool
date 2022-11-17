@@ -3,7 +3,7 @@
 CLASSNAME_CAPITAL="$(tr '[:lower:]' '[:upper:]' <<< ${1:0:1})${1:1}"
 CLASSNAME_UPPER=$(echo $1 | tr '[:lower:]' '[:upper:]')
 
-if [[ -n $CLASSNAME_CAPITAL ]]; then
+if [[ -n $1 ]]; then
 	touch $(pwd)/$CLASSNAME_CAPITAL.{hpp,cpp}
 	echo "Created files $CLASSNAME_CAPITAL.cpp & $CLASSNAME_CAPITAL.hpp"
 
@@ -26,14 +26,14 @@ class $CLASSNAME_CAPITAL
 
 #endif
 EOF
-	echo "Added class definition to $CLASSNAME_CAPITAL.hpp"
+		echo "Added class definition to $CLASSNAME_CAPITAL.hpp"
 
 cat << EOF > $(pwd)/$CLASSNAME_CAPITAL.cpp
 #include "$CLASSNAME_CAPITAL.hpp"
 
 $CLASSNAME_CAPITAL::$CLASSNAME_CAPITAL(void)
 {
-	std::cout << "[$CLASSNAME_CAPITAL] Constructor has been called!" << std::endl;
+	std::cout << "[$CLASSNAME_CAPITAL] Default constructor has been called!" << std::endl;
 }
 
 $CLASSNAME_CAPITAL::~$CLASSNAME_CAPITAL()
