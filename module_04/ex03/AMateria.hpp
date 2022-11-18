@@ -7,14 +7,17 @@
 class AMateria
 {
     protected:
-        std::string type;
+        std::string _type;
 
     public:
-        AMateria(std::string const & type);
-        ~AMateria(void);
-        
+        AMateria();
+        AMateria(std::string const &type);
+        AMateria(const AMateria &obj);
+        virtual ~AMateria(void);
+        AMateria& operator=(const AMateria& obj);
 
         std::string const & getType() const;
+
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };
