@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
+class Form;
 
 class Bureaucrat
 {
@@ -27,7 +29,7 @@ class Bureaucrat
 
 	public:
 		Bureaucrat(void);
-		Bureaucrat(const std::string &name, unsigned short grade);
+		Bureaucrat(const std::string name, unsigned short grade);
 		~Bureaucrat(void);
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat &operator=(const Bureaucrat &obj);
@@ -36,6 +38,9 @@ class Bureaucrat
 		unsigned short		getGrade(void) const;
 		void				incrementGrade(void);
 		void				decrementGrade(void);
+
+		void				signForm(const Form &form);
+		void				executeForm(Form const &form);
 };
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &c);

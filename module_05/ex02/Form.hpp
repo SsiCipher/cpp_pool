@@ -20,7 +20,7 @@ class Form
 			const char *what() const throw ();
 	};
 
-	private:
+	protected:
 		const std::string		_name;
 		bool					_isSigned;
 		const unsigned short	_gradeToSign;
@@ -42,6 +42,7 @@ class Form
 		unsigned short		getGradeToExec(void) const;
 
 		void				beSigned(const Bureaucrat &him);
+		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream &operator<< (std::ostream &stream, const Form &obj);

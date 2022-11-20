@@ -38,6 +38,16 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &obj)
 	return (*this);
 }
 
+const char *Bureaucrat::LowException::what() const throw()
+{
+	return "The given grade is too low";
+}
+
+const char *Bureaucrat::HighException::what() const throw()
+{
+	return "The given grade is too high";
+}
+
 const std::string	Bureaucrat::getName() const
 {
 	return (this->name);
@@ -66,15 +76,10 @@ void	Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(const Form &form)
 {
-	try
-	{
-		form.beSigned(*this);
-	}
-	catch(std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
+	if (this->grade <= form.getGradeToSign())
+		std::cout << this->name << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->name << " couldn't sign "<< form.getName() << " because the bureaucrats grade low" << std::endl;
 }
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &c)

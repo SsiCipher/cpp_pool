@@ -4,7 +4,7 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat president("Donald Trump", 160);
+		Bureaucrat president("Donald Trump", 100);
 		president.decrementGrade();
 		president.decrementGrade();
 		president.decrementGrade();

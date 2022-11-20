@@ -1,5 +1,5 @@
 COMP	= c++
-NAME	= bureaucrat
+NAME	= form
 SRCS	= Bureaucrat.cpp Form.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 

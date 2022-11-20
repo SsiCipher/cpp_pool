@@ -6,7 +6,7 @@ Bureaucrat::Bureaucrat(): name("")
 	this->grade = 150;
 }
 
-Bureaucrat::Bureaucrat(const std::string &name, unsigned short grade): name(name)
+Bureaucrat::Bureaucrat(const std::string name, unsigned short grade): name(name)
 {
 	std::cout << "[Bureaucrat] Constructor has been called!" << std::endl;
 	if (grade < 1)
@@ -72,6 +72,27 @@ void	Bureaucrat::decrementGrade()
 		throw Bureaucrat::GradeTooLowException;
 	else
 		this->grade += 1;
+}
+
+void	Bureaucrat::signForm(const Form &form)
+{
+	if (this->grade <= form.getGradeToSign())
+		std::cout << this->name << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->name << " couldn't sign "<< form.getName() << " because the bureaucrats grade low" << std::endl;
+}
+
+void	Bureaucrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 std::ostream &operator<< (std::ostream &out, const Bureaucrat &c)
