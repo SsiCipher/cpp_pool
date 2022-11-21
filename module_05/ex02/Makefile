@@ -1,11 +1,16 @@
 COMP	= c++
 NAME	= formExamples
-SRCS	= Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
+SRCS	= Bureaucrat.cpp \
+		  Form.cpp \
+		  ShrubberyCreationForm.cpp \
+		  RobotomyRequestForm.cpp \
+		  PresidentialPardonForm.cpp \
+		  main.cpp
 
 all: $(NAME)
 
-$(NAME): $(SRCS) Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp
+$(NAME): $(SRCS) Bureaucrat.hpp Form.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
