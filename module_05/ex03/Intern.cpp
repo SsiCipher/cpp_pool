@@ -38,7 +38,7 @@ Form *Intern::makeForm(std::string& formName, std::string& target)
 	else
 	{
 		std::cout << "The given Form name is invalid!" << std::endl;
-		return (NULL);
+		throw std::exception;
 	}
 	std::cout << "Intern creates " << formName << std::endl;
 	return (form);
