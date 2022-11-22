@@ -107,9 +107,9 @@ float	Fixed::operator /(const Fixed &obj)
 	return (this->toFloat() / obj.toFloat());
 }
 
-// TODO: finish definition of function
 Fixed&	Fixed::operator ++()
 {
+	this->setRawBits(this->getRawBits() + 1);
 	return (*this);
 }
 
@@ -120,9 +120,9 @@ Fixed	Fixed::operator ++(int)
 	return (temp);
 }
 
-// TODO: finish definition of function
 Fixed&	Fixed::operator --()
 {
+	this->setRawBits(this->getRawBits() - 1);
 	return (*this);
 }
 
