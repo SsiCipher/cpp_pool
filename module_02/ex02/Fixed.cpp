@@ -3,7 +3,7 @@
 Fixed::Fixed(void)
 {
 	std::cout << "Default constructor called" << std::endl;
-	Fixed::_num_value = 0;
+	setRawBits(0);
 }
 
 Fixed::Fixed(const int value)
@@ -55,6 +55,102 @@ int Fixed::toInt(void) const
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_num_value / (float)(1 << this->_num_fract));
+}
+
+bool	Fixed::operator <(const Fixed &obj)
+{
+	return (this->toFloat() < obj.toFloat());
+}
+
+bool	Fixed::operator >(const Fixed &obj)
+{
+	return (this->toFloat() > obj.toFloat());
+}
+
+bool	Fixed::operator <=(const Fixed &obj)
+{
+	return (this->toFloat() <= obj.toFloat());
+}
+
+bool	Fixed::operator >=(const Fixed &obj)
+{
+	return (this->toFloat() >= obj.toFloat());
+}
+
+bool	Fixed::operator ==(const Fixed &obj)
+{
+	return (this->toFloat() == obj.toFloat());
+}
+
+bool	Fixed::operator !=(const Fixed &obj)
+{
+	return (this->toFloat() != obj.toFloat());
+}
+
+float	Fixed::operator +(const Fixed &obj)
+{
+	return (this->toFloat() + obj.toFloat());
+}
+
+float	Fixed::operator -(const Fixed &obj)
+{
+	return (this->toFloat() - obj.toFloat());
+}
+
+float	Fixed::operator *(const Fixed &obj)
+{
+	return (this->toFloat() * obj.toFloat());
+}
+
+float	Fixed::operator /(const Fixed &obj)
+{
+	return (this->toFloat() / obj.toFloat());
+}
+
+// TODO: finish definition of function
+Fixed&	Fixed::operator ++()
+{
+	return (*this);
+}
+
+Fixed	Fixed::operator ++(int)
+{
+	Fixed temp(*this);
+	++(*this);
+	return (temp);
+}
+
+// TODO: finish definition of function
+Fixed&	Fixed::operator --()
+{
+	return (*this);
+}
+
+Fixed	Fixed::operator --(int)
+{
+	Fixed temp(*this);
+	++(*this);
+	return (temp);
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b)
+{
+	return (a < b ? a : b);
+}
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+{
+	return (a.toFloat() < b.toFloat() ? a : b);
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b)
+{
+	return (a > b ? a : b);
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+{
+	return (a.toFloat() > b.toFloat() ? a : b);
 }
 
 std::ostream& operator<<(std::ostream& stream, const Fixed& num)
