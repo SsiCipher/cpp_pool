@@ -9,13 +9,19 @@
 
 class Intern
 {
+	class InternException: public std::exception
+	{
+		public:
+			const char *what() const throw ();
+	};
+
 	public:
 		Intern(void);
 		~Intern(void);
 		Intern(const Intern &obj);
 		Intern	&operator=(const Intern &obj);
 
-		Form	*makeForm(std::string& formName, std::string& target);
+		Form	*makeForm(const std::string& formName, const std::string& target);
 };
 
 #endif

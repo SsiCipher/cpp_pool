@@ -1,19 +1,17 @@
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
 int main(void)
 {
-	Bureaucrat president("Donald Trump", 20);
-	RobotomyRequestForm form("home");
+	// Bureaucrat president("Donald Trump", 20);
+	// RobotomyRequestForm form("home");
+	Intern dumbIntern;
 
 	try
 	{
-		form.beSigned(president);
-		// president.signForm(form);
-		form.execute(president);
-		std::cout << president << std::endl;
-		std::cout << form << std::endl;
+		dumbIntern.makeForm("Rent contract", "houseOwner");
 	}
 	catch(std::exception& e)
 	{

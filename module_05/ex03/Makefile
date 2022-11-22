@@ -1,5 +1,5 @@
 COMP	= c++
-NAME	= formExamples
+NAME	= intern
 SRCS	= Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
