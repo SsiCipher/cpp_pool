@@ -33,11 +33,7 @@ void Harl::complain(std::string level)
 	else
 	{
 		switch (
-			(level == "DEBUG") * 0
-			+ (level == "INFO") * 1
-			+ (level == "WARNING") * 2
-			+ (level == "ERROR") * 3
-		)
+			(level == "DEBUG") * 0 + (level == "INFO") * 1 + (level == "WARNING") * 2 + (level == "ERROR") * 3)
 		{
 		case 0:
 			Harl::debug();
@@ -60,9 +56,9 @@ void Harl::complain(std::string level)
 		case 3:
 			Harl::error();
 			break;
-		
+
 		default:
 			break;
-		}	
+		}
 	}
 }

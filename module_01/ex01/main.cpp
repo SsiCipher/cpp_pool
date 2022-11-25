@@ -4,7 +4,7 @@ Zombie *zombieHorde(int N, std::string name);
 
 int main(void)
 {
-	Zombie	*horde;
+	Zombie *horde;
 	std::string zombieName = "ZOMO";
 	std::string newZombieName = "ZOMI";
 

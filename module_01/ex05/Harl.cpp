@@ -32,14 +32,8 @@ void Harl::complain(std::string level)
 			&Harl::debug,
 			&Harl::info,
 			&Harl::warning,
-			&Harl::error
-		};
+			&Harl::error};
 
-		(this->*levels[
-			(level == "DEBUG") * 0
-			+ (level == "INFO") * 1
-			+ (level == "WARNING") * 2
-			+ (level == "ERROR") * 3
-		])();
+		(this->*levels[(level == "DEBUG") * 0 + (level == "INFO") * 1 + (level == "WARNING") * 2 + (level == "ERROR") * 3])();
 	}
 }

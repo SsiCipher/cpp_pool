@@ -2,9 +2,9 @@
 #include <fstream>
 #include <string.h>
 
-void    replace_str(std::string &line, std::string s1, std::string s2)
+void replace_str(std::string &line, std::string s1, std::string s2)
 {
-	size_t  pos;
+	size_t pos;
 
 	pos = line.find(s1);
 	while (pos != std::string::npos)
@@ -15,17 +15,17 @@ void    replace_str(std::string &line, std::string s1, std::string s2)
 	}
 }
 
-bool    is_empty(std::string arg)
+bool is_empty(std::string arg)
 {
 	return (arg.empty());
 }
 
 int main(int argc, char *argv[])
 {
-	std::string		line;
-	std::string		outfileName;
-	std::ifstream	infile;
-	std::ofstream	outfile;
+	std::string line;
+	std::string outfileName;
+	std::ifstream infile;
+	std::ofstream outfile;
 
 	if (argc != 4 || is_empty(argv[2]) || is_empty(argv[3]))
 	{
