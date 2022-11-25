@@ -2,24 +2,25 @@
 
 Zombie::Zombie(void)
 {
+	this->_name = "Nobody";
 }
 
 Zombie::Zombie(std::string &zombie_name)
 {
-	this->name = zombie_name;
+	this->_name = zombie_name;
 }
 
 Zombie::~Zombie(void)
 {
-	std::cout << "Destroyed -> " << this->name << "\n";
+	std::cout << "Destroyed -> " << this->_name << "\n";
 }
 
 void Zombie::announce(void)
 {
-	std::cout << this->name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ...\n";
 }
 
-void Zombie::setName(std::string &name)
+void Zombie::setName(const std::string &name)
 {
-	this->name = name;
+	this->_name = name;
 }

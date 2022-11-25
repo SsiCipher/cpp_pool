@@ -1,6 +1,6 @@
 COMP	= c++
 NAME	= zombie
-SRCS	= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS	= Zombie.cpp newZombie.cpp randomChump.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)

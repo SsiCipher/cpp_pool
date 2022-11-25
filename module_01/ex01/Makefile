@@ -1,5 +1,5 @@
 COMP	= c++
-NAME	= zombie
+NAME	= zombieHorde
 SRCS	= main.cpp Zombie.cpp zombieHorde.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
