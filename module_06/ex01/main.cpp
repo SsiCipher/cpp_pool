@@ -20,10 +20,7 @@ int main(void)
 	Data d;
 
 	d.n = 654;
-
 	uintptr_t ui = serialize(&d);
-
 	std::cout << deserialize(ui)->n << std::endl;
-
 	return (0);
 }
