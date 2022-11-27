@@ -6,6 +6,5 @@ int main(void)
 	Fixed b(2.5f);
 
 	std::cout << a + b << std::endl;
-
 	return (0);
 }

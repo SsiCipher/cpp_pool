@@ -7,7 +7,7 @@
 class Fixed
 {
 	private:
-		int					_num_value;
+		int								_num_value;
 		static const int	_num_fract = 8;
 
 	public:
@@ -20,8 +20,8 @@ class Fixed
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-		float	toFloat( void ) const;
-		int		toInt( void ) const;
+		float	toFloat(void) const;
+		int		toInt(void) const;
 };
 
 std::ostream& operator<<(std::ostream& stream, const Fixed& num);
