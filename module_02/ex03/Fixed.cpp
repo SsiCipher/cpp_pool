@@ -2,43 +2,43 @@
 
 Fixed::Fixed(void)
 {
-	std::cout << "Default constructor called" << std::endl;
-	setRawBits(0);
+	// std::cout << "Default constructor called" << std::endl;
+	this->_num_value = 0;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
-	setRawBits(value << this->_num_fract);
+	// std::cout << "Int constructor called" << std::endl;
+	this->_num_value = value << this->_fract_bits;
 }
 
 Fixed::Fixed(const float value)
 {
-	std::cout << "Float constructor called" << std::endl;
-	setRawBits(roundf(value * (1 << this->_num_fract)));
+	// std::cout << "Float constructor called" << std::endl;
+	this->_num_value = roundf(value * (1 << this->_fract_bits));
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &obj)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
 Fixed &Fixed::operator=(const Fixed &obj)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	Fixed::_num_value = obj.getRawBits();
 	return (*this);
 }
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return (Fixed::_num_value);
 }
 
@@ -49,12 +49,12 @@ void Fixed::setRawBits(int const raw)
 
 int Fixed::toInt(void) const
 {
-	return (this->_num_value >> this->_num_fract);
+	return (this->_num_value >> this->_fract_bits);
 }
 
 float Fixed::toFloat(void) const
 {
-	return ((float)this->_num_value / (float)(1 << this->_num_fract));
+	return ((float)this->_num_value / (float)(1 << this->_fract_bits));
 }
 
 bool Fixed::operator<(const Fixed &obj)
@@ -128,6 +128,7 @@ Fixed &Fixed::operator++()
 Fixed Fixed::operator++(int)
 {
 	Fixed temp(*this);
+
 	++(*this);
 	return (temp);
 }
@@ -141,6 +142,7 @@ Fixed &Fixed::operator--()
 Fixed Fixed::operator--(int)
 {
 	Fixed temp(*this);
+
 	++(*this);
 	return (temp);
 }
