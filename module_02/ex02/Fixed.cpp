@@ -59,64 +59,64 @@ float Fixed::toFloat(void) const
 
 bool Fixed::operator<(const Fixed &obj)
 {
-	return (this->toFloat() < obj.toFloat());
+	return (this->getRawBits() < obj.getRawBits());
 }
 
 bool Fixed::operator>(const Fixed &obj)
 {
-	return (this->toFloat() > obj.toFloat());
+	return (this->getRawBits() > obj.getRawBits());
 }
 
 bool Fixed::operator<=(const Fixed &obj)
 {
-	return (this->toFloat() <= obj.toFloat());
+	return (this->getRawBits() <= obj.getRawBits());
 }
 
 bool Fixed::operator>=(const Fixed &obj)
 {
-	return (this->toFloat() >= obj.toFloat());
+	return (this->getRawBits() >= obj.getRawBits());
 }
 
 bool Fixed::operator==(const Fixed &obj)
 {
-	return (this->toFloat() == obj.toFloat());
+	return (this->getRawBits() == obj.getRawBits());
 }
 
 bool Fixed::operator!=(const Fixed &obj)
 {
-	return (this->toFloat() != obj.toFloat());
+	return (this->getRawBits() != obj.getRawBits());
 }
 
 Fixed Fixed::operator+(const Fixed &obj)
 {
-	Fixed res;
+	Fixed result;
 
-	res.setRawBits(this->getRawBits() + obj.getRawBits());
-	return (res);
+	result.setRawBits(this->getRawBits() + obj.getRawBits());
+	return (result);
 }
 
 Fixed Fixed::operator-(const Fixed &obj)
 {
-	Fixed res;
+	Fixed result;
 
-	res.setRawBits(this->getRawBits() - obj.getRawBits());
-	return (res);
+	result.setRawBits(this->getRawBits() - obj.getRawBits());
+	return (result);
 }
 
 Fixed Fixed::operator*(const Fixed &obj)
 {
-	Fixed res;
+	Fixed result;
 
-	res.setRawBits(this->getRawBits() * obj.getRawBits());
-	return (res);
+	result.setRawBits(this->getRawBits() * obj.getRawBits());
+	return (result);
 }
 
 Fixed Fixed::operator/(const Fixed &obj)
 {
-	Fixed res;
+	Fixed result;
 
-	res.setRawBits(this->getRawBits() / obj.getRawBits());
-	return (res);
+	result.setRawBits(this->getRawBits() / obj.getRawBits());
+	return (result);
 }
 
 Fixed &Fixed::operator++()
@@ -152,7 +152,7 @@ Fixed &Fixed::min(Fixed &a, Fixed &b)
 
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
-	return (a.toFloat() < b.toFloat() ? a : b);
+	return (a.getRawBits() < b.getRawBits() ? a : b);
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
@@ -162,7 +162,7 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
-	return (a.toFloat() > b.toFloat() ? a : b);
+	return (a.getRawBits() > b.getRawBits() ? a : b);
 }
 
 std::ostream &operator<<(std::ostream &stream, const Fixed &num)

@@ -23,19 +23,17 @@ Point::Point(const Point &obj): _x(obj._x), _y(obj._y)
 
 Point &Point::operator=(const Point &obj)
 {
+	(void)obj;
 	std::cout << "[Point] Copy assignment operator has been called!" << std::endl;
-	if (this != &obj)
-	{
-	}
 	return (*this);
 }
 
-float Point::getX(void) const
+Fixed Point::getX(void) const
 {
-	return (this->_x.toFloat());
+	return (this->_x);
 }
 
-float Point::getY(void) const
+Fixed Point::getY(void) const
 {
-	return (this->_y.toFloat());
+	return (this->_y);
 }
