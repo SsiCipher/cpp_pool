@@ -13,6 +13,7 @@ DiamondTrap::DiamondTrap(std::string name)
 {
 	this->_name = name;
 	this->_hitPoints = 100;
+	DiamondTrap::ClapTrap::_name = name + "_clap_trap";
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 	std::cout << "[DiamondTrap] constructor has been called!" << std::endl;
