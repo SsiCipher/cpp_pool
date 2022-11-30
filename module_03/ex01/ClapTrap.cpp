@@ -2,6 +2,10 @@
 
 ClapTrap::ClapTrap()
 {
+	this->_name = "";
+	this->_hitPoints = 10;
+	this->_energyPoints = 10;
+	this->_attackDamage = 0;
 	std::cout << "[ClapTrap] Default constructor has been called!" << std::endl;
 }
 

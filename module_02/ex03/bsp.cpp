@@ -22,5 +22,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     Fixed subTriangleArea1 = triangle_area(point, b, c);
     Fixed subTriangleArea2 = triangle_area(a, point, c);
     Fixed subTriangleArea3 = triangle_area(a, b, point);
+    if (subTriangleArea1 == 0 || subTriangleArea2 == 0 || subTriangleArea3 == 0)
+        return (false);
     return (baseTriangleArea == subTriangleArea1 + subTriangleArea2 + subTriangleArea3);
 }

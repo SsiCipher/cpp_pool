@@ -29,18 +29,18 @@ class Fixed
 		static const Fixed &max(const Fixed &a, const Fixed &b);
 
 		// comparison operators
-		bool operator<(const Fixed &obj);
-		bool operator>(const Fixed &obj);
-		bool operator<=(const Fixed &obj);
-		bool operator>=(const Fixed &obj);
-		bool operator==(const Fixed &obj);
-		bool operator!=(const Fixed &obj);
+		bool operator<(const Fixed &obj) const;
+		bool operator>(const Fixed &obj) const;
+		bool operator<=(const Fixed &obj) const;
+		bool operator>=(const Fixed &obj) const;
+		bool operator==(const Fixed &obj) const;
+		bool operator!=(const Fixed &obj) const;
 
 		// arithmetic operators
-		Fixed operator+(const Fixed &obj);
-		Fixed operator-(const Fixed &obj);
-		Fixed operator*(const Fixed &obj);
-		Fixed operator/(const Fixed &obj);
+		Fixed operator+(const Fixed &obj) const;
+		Fixed operator-(const Fixed &obj) const;
+		Fixed operator*(const Fixed &obj) const;
+		Fixed operator/(const Fixed &obj) const;
 
 		// increment/decrement
 		Fixed &operator++();
