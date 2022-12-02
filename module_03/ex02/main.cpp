@@ -8,5 +8,6 @@ int main(void)
 	fragTrap1.attack("fragTrap2");
 	fragTrap2.takeDamage(20);
 	fragTrap1.highFivesGuys();
+
 	return (0);
 }

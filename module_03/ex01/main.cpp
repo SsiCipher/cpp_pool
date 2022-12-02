@@ -7,6 +7,8 @@ int main(void)
 
 	scavTrap1.attack("scavTrap2");
 	scavTrap2.takeDamage(20);
+	scavTrap2.beRepaired(20);
 	scavTrap1.guardGate();
+
 	return (0);
 }

@@ -1,11 +1,11 @@
 COMP	= c++
-NAME	= fragTrap
-SRCS	= ClapTrap.cpp ScavTrap.cpp FragTrap.cpp main.cpp
+NAME	= diamondTrap
+SRCS	= ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRCS) ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+$(NAME): $(SRCS) ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:

@@ -1,12 +1,15 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-	FragTrap	fragTrap1("fragTrap1");
-	FragTrap	fragTrap2("fragTrap2");
+	DiamondTrap dt1;
 
-	fragTrap1.attack("fragTrap2");
-	fragTrap2.takeDamage(20);
-	fragTrap1.highFivesGuys();
+	std::cout << dt1 << std::endl;
+
+	// dt1.attack("Frank");
+	// dt1.guardGate();
+	// dt1.highFivesGuys();
+	// dt1.whoAmI();
+
 	return (0);
 }

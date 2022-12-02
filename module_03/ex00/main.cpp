@@ -2,11 +2,12 @@
 
 int main(void)
 {
-	ClapTrap clapTrap1("clapTrap1");
-	ClapTrap clapTrap2("clapTrap2");
+	ClapTrap cp1("cp1");
+	ClapTrap cp2("cp2");
 
-	clapTrap1.attack("clapTrap2");
-	clapTrap2.takeDamage(0);
-	clapTrap2.beRepaired(1);
+	cp1.attack("cp2");
+	cp2.takeDamage(2);
+	cp2.beRepaired(2);
+
 	return (0);
 }

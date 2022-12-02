@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void): ClapTrap()
+ScavTrap::ScavTrap(void)
 {
 	this->_name = "";
 	this->_hitPoints = 100;
@@ -9,8 +9,9 @@ ScavTrap::ScavTrap(void): ClapTrap()
 	std::cout << "[ScavTrap] Default constructor has been called!" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name)
+ScavTrap::ScavTrap(std::string name)
 {
+	this->_name = name;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;

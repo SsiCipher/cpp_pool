@@ -25,8 +25,8 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &obj)
 {
-	*this = obj;
 	std::cout << "[ClapTrap] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
@@ -50,12 +50,12 @@ void ClapTrap::attack(const std::string &target)
 		this->_energyPoints -= 1;
 	}
 	else
-		std::cout << "ClapTrap " << this->_name << " doesn't have enough energy points" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " doesn't have enough points" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->_hitPoints > 0 && amount <= this->_hitPoints)
+	if (this->_hitPoints > 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points" << std::endl;
 		this->_hitPoints -= amount;

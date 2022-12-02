@@ -1,21 +1,22 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void)
+DiamondTrap::DiamondTrap(void): ClapTrap(), FragTrap(), ScavTrap()
 {
-	this->_name = "";
-	this->_hitPoints = 100;
-	this->_energyPoints = 100;
-	this->_attackDamage = 30;
+	this->_name = "nobody";
+	ClapTrap::_name = "nobody_clap_name";
+	this->_hitPoints = FragTrap::_hitPoints;
+	this->_energyPoints = ScavTrap::_energyPoints;
+	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << "[DiamondTrap] Default constructor has been called!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
 	this->_name = name;
-	this->_hitPoints = 100;
-	DiamondTrap::ClapTrap::_name = name + "_clap_trap";
-	this->_energyPoints = 100;
-	this->_attackDamage = 30;
+	ClapTrap::_name = name + "_clap_name";
+	this->_hitPoints = FragTrap::_hitPoints;
+	this->_energyPoints = ScavTrap::_energyPoints;
+	this->_attackDamage = FragTrap::_attackDamage;
 	std::cout << "[DiamondTrap] constructor has been called!" << std::endl;
 }
 
@@ -24,10 +25,10 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "[DiamondTrap] Destructor has been called!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &obj): ClapTrap(obj)
+DiamondTrap::DiamondTrap(const DiamondTrap &obj)
 {
-	*this = obj;
 	std::cout << "[DiamondTrap] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj)
@@ -36,25 +37,26 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj)
 	if (this != &obj)
 	{
 		this->_name = obj._name;
-		this->_hitPoints = obj._hitPoints;
-		this->_energyPoints = obj._energyPoints;
-		this->_attackDamage = obj._attackDamage;
+		this->ClapTrap::_name = obj.ClapTrap::_name;
+		this->_hitPoints = obj.FragTrap::_hitPoints;
+		this->_energyPoints = obj.ScavTrap::_energyPoints;
+		this->_attackDamage = obj.FragTrap::_attackDamage;
 	}
 	return (*this);
 }
 
-void	DiamondTrap::attack(const std::string &target)
+void DiamondTrap::attack(const std::string &target)
 {
-	if (this->_energyPoints > 0 && this->_hitPoints > 0)
-	{
-		std::cout << "DiamondTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
-		this->_energyPoints -= 1;
-	}
-	else
-		std::cout << "DiamondTrap " << this->_name << " doesn't have enough energy points" << std::endl;
+	this->ScavTrap::attack(target);
 }
 
-void	DiamondTrap::highFivesGuys()
+void DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap is looking for ✋ high fives" << std::endl;
+	std::cout << "Name: " << this->_name << ", ClapTrap name: " << this->ClapTrap::_name << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const DiamondTrap& dt)
+{
+	os << dt._name << " - " << dt.ClapTrap::_name << " - " << dt._hitPoints << " - " << dt._energyPoints << " - " << dt._attackDamage;
+	return (os);
 }
