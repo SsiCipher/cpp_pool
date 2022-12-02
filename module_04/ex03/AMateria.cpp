@@ -2,14 +2,14 @@
 
 AMateria::AMateria(void)
 {
-	std::cout << "[AMateria] Constructor has been called!" << std::endl;
 	this->_type = "";
+	std::cout << "[AMateria] Default constructor has been called!" << std::endl;
 }
 
-AMateria::AMateria(std::string const &type)
+AMateria::AMateria(std::string const & type)
 {
-	std::cout << "[AMateria] Constructor has been called!" << std::endl;
 	this->_type = type;
+	std::cout << "[AMateria] constructor has been called!" << std::endl;
 }
 
 AMateria::~AMateria()
@@ -33,12 +33,12 @@ AMateria &AMateria::operator=(const AMateria &obj)
 	return (*this);
 }
 
-std::string const & AMateria::getType() const
+std::string const &AMateria::getType() const
 {
 	return (this->_type);
 }
 
 void AMateria::use(ICharacter& target)
 {
-	std::cout << target.getName() << " is being used" << std::endl;
+	std::cout << "Using materia " << this->_type << " by " << target.getName() << std::endl;
 }
