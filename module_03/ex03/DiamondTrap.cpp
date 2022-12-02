@@ -4,9 +4,9 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), FragTrap(), ScavTrap()
 {
 	this->_name = "nobody";
 	ClapTrap::_name = "nobody_clap_name";
-	this->_hitPoints = FragTrap::_hitPoints;
-	this->_energyPoints = ScavTrap::_energyPoints;
-	this->_attackDamage = FragTrap::_attackDamage;
+	this->_hitPoints = FragTrap::_intialHitPoints;
+	this->_energyPoints = ScavTrap::_intialEnergyPoints;
+	this->_attackDamage = FragTrap::_intialAttackDamage;
 	std::cout << "[DiamondTrap] Default constructor has been called!" << std::endl;
 }
 
@@ -14,9 +14,9 @@ DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name), FragTrap(name
 {
 	this->_name = name;
 	ClapTrap::_name = name + "_clap_name";
-	this->_hitPoints = FragTrap::_hitPoints;
-	this->_energyPoints = ScavTrap::_energyPoints;
-	this->_attackDamage = FragTrap::_attackDamage;
+	this->_hitPoints = FragTrap::_intialHitPoints;
+	this->_energyPoints = ScavTrap::_intialEnergyPoints;
+	this->_attackDamage = FragTrap::_intialAttackDamage;
 	std::cout << "[DiamondTrap] constructor has been called!" << std::endl;
 }
 
@@ -25,7 +25,7 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "[DiamondTrap] Destructor has been called!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &obj)
+DiamondTrap::DiamondTrap(const DiamondTrap &obj): ClapTrap(obj), FragTrap(obj), ScavTrap(obj)
 {
 	std::cout << "[DiamondTrap] Copy constructor has been called!" << std::endl;
 	*this = obj;
@@ -53,10 +53,4 @@ void DiamondTrap::attack(const std::string &target)
 void DiamondTrap::whoAmI()
 {
 	std::cout << "Name: " << this->_name << ", ClapTrap name: " << this->ClapTrap::_name << std::endl;
-}
-
-std::ostream& operator<<(std::ostream& os, const DiamondTrap& dt)
-{
-	os << dt._name << " - " << dt.ClapTrap::_name << " - " << dt._hitPoints << " - " << dt._energyPoints << " - " << dt._attackDamage;
-	return (os);
 }

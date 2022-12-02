@@ -19,10 +19,6 @@ class DiamondTrap: public FragTrap, public ScavTrap
 
 		void attack(const std::string &target);
 		void whoAmI();
-
-		friend std::ostream& operator<<(std::ostream& os, const DiamondTrap& dt);
 };
-
-std::ostream& operator<<(std::ostream& os, const DiamondTrap& dt);
 
 #endif

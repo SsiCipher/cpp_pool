@@ -6,6 +6,11 @@
 
 class FragTrap: virtual public ClapTrap
 {
+	protected:
+		static const int _intialHitPoints = 100;
+		static const int _intialEnergyPoints = 100;
+		static const int _intialAttackDamage = 30;
+
 	public:
 		FragTrap(void);
 		FragTrap(std::string name);
