@@ -37,7 +37,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &obj)
 	if (this != &obj)
 	{
 		this->_name = obj._name;
-		this->ClapTrap::_name = obj.ClapTrap::_name;
+		ClapTrap::_name = obj.ClapTrap::_name;
 		this->_hitPoints = obj.FragTrap::_hitPoints;
 		this->_energyPoints = obj.ScavTrap::_energyPoints;
 		this->_attackDamage = obj.FragTrap::_attackDamage;

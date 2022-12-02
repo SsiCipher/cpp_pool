@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	DiamondTrap dt1;
+	DiamondTrap dt1("lplp");
 
 	std::cout << dt1 << std::endl;
 
