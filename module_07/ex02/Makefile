@@ -1,11 +1,11 @@
 COMP	= c++
-NAME	= iter
+NAME	= array
 SRCS	= main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRCS) iter.hpp
+$(NAME): $(SRCS) Array.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
