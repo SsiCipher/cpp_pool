@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void): ClapTrap(), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(void)
 {
 	this->_name = "nobody";
 	ClapTrap::_name = "nobody_clap_name";
@@ -10,7 +10,7 @@ DiamondTrap::DiamondTrap(void): ClapTrap(), FragTrap(), ScavTrap()
 	std::cout << "[DiamondTrap] Default constructor has been called!" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name), FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap(const std::string &name)
 {
 	this->_name = name;
 	ClapTrap::_name = name + "_clap_name";
