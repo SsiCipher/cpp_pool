@@ -1,6 +1,6 @@
 COMP	= c++
 NAME	= interface
-SRCS	= AMateria.cpp main.cpp
+SRCS	= AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)

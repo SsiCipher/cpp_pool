@@ -9,11 +9,12 @@ class Character: public ICharacter
 {
 	private:
 		std::string		_name;
-		AMateria		*_inventory;
+		AMateria			*_inventory[4];
 		unsigned int	_inventory_size;
 
 	public:
 		Character(void);
+		Character(const std::string &name);
 		~Character(void);
 		Character(const Character &obj);
 		Character &operator=(const Character &obj);
