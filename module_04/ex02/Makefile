@@ -1,5 +1,5 @@
 COMP	= c++
-NAME	= animal
+NAME	= brain
 SRCS	= Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 

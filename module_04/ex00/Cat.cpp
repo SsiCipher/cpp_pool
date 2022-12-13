@@ -13,8 +13,8 @@ Cat::~Cat()
 
 Cat::Cat(const Cat &obj): Animal(obj)
 {
-	*this = obj;
 	std::cout << "[Cat] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Cat &Cat::operator=(const Cat &obj)

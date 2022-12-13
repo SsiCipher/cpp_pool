@@ -14,9 +14,8 @@ Brain::~Brain()
 
 Brain::Brain(const Brain &obj)
 {
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = obj._ideas[i];
 	std::cout << "[Brain] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Brain &Brain::operator=(const Brain &obj)

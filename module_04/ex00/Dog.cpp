@@ -13,8 +13,8 @@ Dog::~Dog()
 
 Dog::Dog(const Dog &obj): Animal(obj)
 {
-	*this = obj;
 	std::cout << "[Dog] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Dog &Dog::operator=(const Dog &obj)

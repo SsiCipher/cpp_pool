@@ -10,7 +10,7 @@ class Brain
 
 	public:
 		Brain(void);
-		virtual ~Brain(void);
+		~Brain(void);
 		Brain(const Brain &obj);
 		Brain &operator=(const Brain &obj);
 };

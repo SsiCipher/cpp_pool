@@ -43,8 +43,8 @@ $CLASSNAME_CAPITAL::~$CLASSNAME_CAPITAL()
 
 $CLASSNAME_CAPITAL::$CLASSNAME_CAPITAL(const $CLASSNAME_CAPITAL &obj)
 {
-	*this = obj;
 	std::cout << "[$CLASSNAME_CAPITAL] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 $CLASSNAME_CAPITAL &$CLASSNAME_CAPITAL::operator=(const $CLASSNAME_CAPITAL &obj)

@@ -20,6 +20,7 @@ Cure::Cure(const Cure &obj)
 Cure &Cure::operator=(const Cure &obj)
 {
 	std::cout << "[Cure] Copy assignment operator has been called!" << std::endl;
+	(void)obj;
 	return (*this);
 }
 

@@ -11,7 +11,7 @@ MateriaSource::MateriaSource(void)
 MateriaSource::~MateriaSource()
 {
 	std::cout << "[MateriaSource] Destructor has been called!" << std::endl;
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < 4; i++) {
 		if (this->_inventory[i])
 			delete this->_inventory[i];
 	}
@@ -19,8 +19,8 @@ MateriaSource::~MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &obj)
 {
-	*this = obj;
 	std::cout << "[MateriaSource] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &obj)
@@ -64,8 +64,7 @@ void			MateriaSource::learnMateria(AMateria *m)
 
 AMateria*	MateriaSource::createMateria(std::string const &type)
 {
-	for (int i = 0; i < 4; i++)
-	{
+	for (int i = 0; i < 4; i++) {
 		if (this->_inventory[i]->getType() == type)
 			return (this->_inventory[i]->clone());
 	}
