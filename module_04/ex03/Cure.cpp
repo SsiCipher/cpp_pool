@@ -2,8 +2,8 @@
 
 Cure::Cure(void)
 {
-	this->_type = "cure";
 	std::cout << "[Cure] Default constructor has been called!" << std::endl;
+	this->_type = "cure";
 }
 
 Cure::~Cure()
@@ -13,8 +13,8 @@ Cure::~Cure()
 
 Cure::Cure(const Cure &obj)
 {
-	*this = obj;
 	std::cout << "[Cure] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Cure &Cure::operator=(const Cure &obj)

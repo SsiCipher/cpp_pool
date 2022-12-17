@@ -4,7 +4,7 @@ Brain::Brain(void)
 {
 	std::cout << "[Brain] Constructor has been called!" << std::endl;
 	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = "~ VOID ~";
+		this->_ideas[i] = "~ Random Idea ~";
 }
 
 Brain::~Brain()

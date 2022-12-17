@@ -7,7 +7,7 @@
 class MateriaSource: public IMateriaSource
 {
 	private:
-		AMateria			*_inventory[4];
+		AMateria		*_inventory[4];
 		unsigned int	_inventory_size;
 
 	public:
@@ -16,7 +16,7 @@ class MateriaSource: public IMateriaSource
 		MateriaSource(const MateriaSource &obj);
 		MateriaSource &operator=(const MateriaSource &obj);
 
-		void			learnMateria(AMateria *);
+		void		learnMateria(AMateria *);
 		AMateria*	createMateria(std::string const &type);
 };
 
