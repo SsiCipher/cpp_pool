@@ -25,8 +25,8 @@ class Form
 		bool					_isSigned;
 		const unsigned short	_gradeToSign;
 		const unsigned short	_gradeToExec;
-		LowException			GradeTooLowException;
-		HighException			GradeTooHighException;
+		LowException			_GradeTooLowException;
+		HighException			_GradeTooHighException;
 
 	public:
 		Form(void);

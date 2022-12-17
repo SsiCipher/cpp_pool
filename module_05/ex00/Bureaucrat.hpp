@@ -4,7 +4,6 @@
 #include <iostream>
 #include <exception>
 
-
 class Bureaucrat
 {
 	class LowException: public std::exception
@@ -20,10 +19,10 @@ class Bureaucrat
 	};
 
 	private:
-		const std::string	name;
-		unsigned short		grade;
-		LowException		GradeTooLowException;
-		HighException		GradeTooHighException;
+		const std::string	_name;
+		unsigned short		_grade;
+		LowException		_GradeTooLowException;
+		HighException		_GradeTooHighException;
 
 	public:
 		Bureaucrat(void);

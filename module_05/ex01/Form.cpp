@@ -11,9 +11,9 @@ Form::Form(const std::string name, const unsigned short gradeToSign, const unsig
 {
 	std::cout << "[Form] Constructor has been called!" << std::endl;
 	if (gradeToSign < 1 || gradeToExec < 1)
-		throw Form::GradeTooHighException;
+		throw Form::_GradeTooHighException;
 	else if (gradeToSign > 150 || gradeToExec > 150)
-		throw Form::GradeTooLowException;
+		throw Form::_GradeTooLowException;
 	this->_isSigned = false;
 }
 
@@ -24,8 +24,8 @@ Form::~Form()
 
 Form::Form(const Form &obj): _name(obj._name), _gradeToSign(obj._gradeToSign), _gradeToExec(obj._gradeToExec)
 {
-	*this = obj;
 	std::cout << "[Form] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Form &Form::operator=(const Form &obj)
@@ -73,7 +73,7 @@ void	Form::beSigned(const Bureaucrat &him)
 	if (him.getGrade() <= this->getGradeToSign())
 		this->_isSigned = true;
 	else
-		throw Form::GradeTooLowException;
+		throw Form::_GradeTooLowException;
 }
 
 std::ostream &operator<< (std::ostream &stream, const Form &obj)

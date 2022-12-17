@@ -12,8 +12,8 @@ Intern::~Intern(void)
 
 Intern::Intern(const Intern &obj)
 {
-	*this = obj;
 	std::cout << "[Intern] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 Intern &Intern::operator=(const Intern &obj)
