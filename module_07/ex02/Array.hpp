@@ -7,7 +7,7 @@ template <typename T>
 class Array
 {
 	private:
-		T							*_arr;
+		T				*_arr;
 		unsigned int	_arr_size;
 
 	public:
