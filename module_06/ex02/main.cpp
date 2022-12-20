@@ -38,19 +38,19 @@ void identify(Base* p)
     A *a = dynamic_cast<A *>(p);
     if (a)
     {
-        std::cout << "p is of type A" << std::endl;
+        std::cout << "A" << std::endl;
         return ;
     }
     B* b = dynamic_cast<B *>(p);
     if (b)
     {
-        std::cout << "p is of type B" << std::endl;
+        std::cout << "B" << std::endl;
         return ;
     }
     C *c = dynamic_cast<C *>(p);
     if (c)
     {
-        std::cout << "p is of type C" << std::endl;
+        std::cout << "C" << std::endl;
         return ;
     }
 }
@@ -60,18 +60,18 @@ void identify(Base& p)
     try
     {
         dynamic_cast<A &>(p);
-        std::cout << "variable p is of type A" << std::endl;
+        std::cout << "A" << std::endl;
     }
     catch(const std::exception& e)
     {
         try
         {
             dynamic_cast<B &>(p);
-            std::cout << "variable p is of type B" << std::endl;
+            std::cout << "B" << std::endl;
         }
         catch(const std::exception& e)
         {
-            std::cout << "variable p is of type C" << std::endl;
+            std::cout << "C" << std::endl;
         }
         
     }

@@ -20,7 +20,7 @@ class Form
 			const char *what() const throw ();
 	};
 
-	protected:
+	private:
 		const std::string		_name;
 		bool					_isSigned;
 		const unsigned short	_gradeToSign;

@@ -13,7 +13,7 @@ class Array
 	public:
 		Array(void)
 		{
-			_arr = NULL;
+			_arr = new T[0];
 			_arr_size = 0;
 		}
 
@@ -25,15 +25,14 @@ class Array
 
 		~Array(void)
 		{
-			if (_arr)
-				delete[] _arr;
+			delete[] _arr;
 		}
 
 		Array(const Array &obj)
 		{
 			if (!obj._arr)
 			{
-				this->_arr = NULL;
+				this->_arr = new T[0];
 				this->_arr_size = 0;
 			}
 			else
@@ -51,7 +50,7 @@ class Array
 				delete[] this->_arr;
 			if (!obj._arr)
 			{
-				obj._arr = NULL;
+				obj._arr = new T[0];
 				obj._arr_size = 0;
 			}
 			else

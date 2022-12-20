@@ -1,16 +1,25 @@
 #include "iter.hpp"
 
-int	printDouble(int n)
+class Awesome
 {
-	std::cout << n * 2 << std::endl;
-	return (n);
-}
+	public:
+		Awesome( void ) : _n( 42 ) { return; }
+		int get( void ) const { return this->_n; }
+	private:
+		int _n;
+};
 
-int main(void)
-{
-	int arr[] = {1, 2, 3};
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
 
-	iter(arr, 3, printDouble);
+template< typename T >
+void print( T const& x ) { std::cout << x << std::endl; return; }
 
-	return (0);
+int main() {
+    int tab[] = { 0, 1, 2, 3, 4 };
+	Awesome tab2[5];
+
+    iter(tab, 5, print);
+    iter(tab2, 5, print);
+    
+	return 0;
 }

@@ -3,18 +3,22 @@
 
 int main()
 {
-	Animal *animals[10];
-
-	for (int i = 0; i < 5; i++)
-		animals[i] = new Dog();
-	for (int i = 5; i < 10; i++)
-		animals[i] = new Cat();
-
-	for (int i = 0; i < 10; i++)
+	//Animal *animals[10];
+	Cat a;
 	{
-		animals[i]->makeSound();
-		delete animals[i];
+		std::cout << "www" << std::endl;
+		Cat b = a;
 	}
+	// for (int i = 0; i < 5; i++)
+	// 	animals[i] = new Dog();
+	// for (int i = 5; i < 10; i++)
+	// 	animals[i] = new Cat();
+
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	animals[i]->makeSound();
+	// 	delete animals[i];
+	// }
 
 	return 0;
 }
