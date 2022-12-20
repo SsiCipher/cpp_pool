@@ -1,14 +1,15 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): Form("", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(void): Form("shrubbery creation", 145, 137)
 {
 	std::cout << "[ShrubberyCreationForm] Default constructor has been called!" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): Form(target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): Form("shrubbery creation", 145, 137)
 {
 	std::cout << "[ShrubberyCreationForm] Constructor has been called!" << std::endl;
+	this->_target = target;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -18,17 +19,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj): Form(obj)
 {
-	*this = obj;
 	std::cout << "[ShrubberyCreationForm] Copy constructor has been called!" << std::endl;
+	*this = obj;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
 	std::cout << "[ShrubberyCreationForm] Copy assignment operator has been called!" << std::endl;
-	if (this != &obj)
-	{
-		this->_isSigned = obj._isSigned;
-	}
+	this->Form::operator=(obj);
 	return (*this);
 }
 
@@ -38,7 +36,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 	{
 		std::ofstream shrubberyFile;
 
-		shrubberyFile.open(this->getName() + "_shrubbery");
+		shrubberyFile.open(this->_target + "_shrubbery");
 		if (!shrubberyFile.is_open())
 		{
 			std::cout << "ERROR: Failed to create the file" << std::endl;
@@ -55,9 +53,9 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 			shrubberyFile << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
 			shrubberyFile << "       |o|        | |         | |" << std::endl;
 			shrubberyFile << "       |.|        | |         | |" << std::endl;
-			shrubberyFile << "jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
+			shrubberyFile << "__._ \\/ ._\\//_/__/  ,\\_//__\\_/.  \\_//__/_" << std::endl;
 		}
 	}
 	else
-		throw ShrubberyCreationForm::GradeTooLowException;
+		throw Form::GradeTooLowException();
 }

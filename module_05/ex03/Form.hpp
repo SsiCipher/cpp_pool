@@ -8,25 +8,12 @@ class Bureaucrat;
 
 class Form
 {
-	class LowException: public std::exception
-	{
-		public:
-			const char *what() const throw ();
-	};
 
-	class HighException: public std::exception
-	{
-		public:
-			const char *what() const throw ();
-	};
-
-	protected:
+	private:
 		const std::string		_name;
 		bool					_isSigned;
 		const unsigned short	_gradeToSign;
 		const unsigned short	_gradeToExec;
-		LowException			GradeTooLowException;
-		HighException			GradeTooHighException;
 
 	public:
 		Form(void);
@@ -40,9 +27,20 @@ class Form
 		bool				getIsSigned(void) const;
 		unsigned short		getGradeToSign(void) const;
 		unsigned short		getGradeToExec(void) const;
-
 		void				beSigned(const Bureaucrat &him);
 		virtual void		execute(Bureaucrat const & executor) const = 0;
+
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				const char *what() const throw ();
+		};
+
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				const char *what() const throw ();
+		};
 };
 
 std::ostream &operator<< (std::ostream &stream, const Form &obj);

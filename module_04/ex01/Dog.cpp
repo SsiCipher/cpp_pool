@@ -13,7 +13,7 @@ Dog::~Dog()
 	delete this->_brain;
 }
 
-Dog::Dog(const Dog &obj): Animal(obj)
+Dog::Dog(const Dog &obj): Animal(obj), _brain(NULL)
 {
 	std::cout  << "[Dog] Copy constructor has been called!" << std::endl;
 	*this = obj;
@@ -24,6 +24,8 @@ Dog &Dog::operator=(const Dog &obj)
 	std::cout << "[Dog] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
+		if(_brain)
+			delete _brain;
 		this->_type = obj._type;
 		this->_brain = new Brain();
 		*(this->_brain) = *(obj._brain);

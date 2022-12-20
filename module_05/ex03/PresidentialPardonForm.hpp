@@ -6,6 +6,9 @@
 
 class PresidentialPardonForm: public Form
 {
+	private:
+		std::string	_target;
+
 	public:
 		PresidentialPardonForm(void);
 		PresidentialPardonForm(const std::string& target);

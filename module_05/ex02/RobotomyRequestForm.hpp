@@ -6,6 +6,9 @@
 
 class RobotomyRequestForm: public Form
 {
+	private:
+		std::string	_target;
+
 	public:
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(const std::string& target);

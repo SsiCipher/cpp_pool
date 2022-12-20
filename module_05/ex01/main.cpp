@@ -3,8 +3,8 @@
 int main(void)
 {
 
-	Bureaucrat president("Donald Trump", 150);
-	Form	lawForm("New Law", 1, 100);
+	Bureaucrat	president("Barack Obama", 4);
+	Form		lawForm("New Law", 1, 100);
 
 	try
 	{

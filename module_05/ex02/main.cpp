@@ -1,23 +1,21 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
 int main(void)
 {
-	Bureaucrat president("Donald Trump", 20);
-	RobotomyRequestForm form("home");
-
 	try
 	{
-		form.beSigned(president);
-		// president.signForm(form);
-		form.execute(president);
-		std::cout << president << std::endl;
-		std::cout << form << std::endl;
+		Bureaucrat			president("Barack Obama", 1);
+		RobotomyRequestForm	form("human");
+		// form.beSigned(president);
+		president.executeForm(form);
+		// form.execute(president);
 	}
-	catch(std::exception& e)
+	catch(const std::exception& e)
 	{
-		std::cerr << "Exception caught: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	return (0);

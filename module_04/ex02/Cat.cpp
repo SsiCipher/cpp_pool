@@ -13,7 +13,7 @@ Cat::~Cat()
 	delete this->_brain;
 }
 
-Cat::Cat(const Cat &obj): Animal(obj)
+Cat::Cat(const Cat &obj): Animal(obj), _brain(NULL)
 {
 	std::cout << "[Cat] Copy constructor has been called!" << std::endl;
 	*this = obj;
@@ -24,6 +24,8 @@ Cat &Cat::operator=(const Cat &obj)
 	std::cout << "[Cat] Copy assignment operator has been called!" << std::endl;
 	if (this != &obj)
 	{
+		if (this->_brain)
+			delete this->_brain;
 		this->_type = obj._type;
 		this->_brain = new Brain();
 		*(this->_brain) = *(obj._brain);

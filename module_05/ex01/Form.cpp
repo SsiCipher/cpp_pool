@@ -11,9 +11,9 @@ Form::Form(const std::string name, const unsigned short gradeToSign, const unsig
 {
 	std::cout << "[Form] Constructor has been called!" << std::endl;
 	if (gradeToSign < 1 || gradeToExec < 1)
-		throw Form::_GradeTooHighException;
+		throw Form::GradeTooHighException();
 	else if (gradeToSign > 150 || gradeToExec > 150)
-		throw Form::_GradeTooLowException;
+		throw Form::GradeTooLowException();
 	this->_isSigned = false;
 }
 
@@ -31,21 +31,8 @@ Form::Form(const Form &obj): _name(obj._name), _gradeToSign(obj._gradeToSign), _
 Form &Form::operator=(const Form &obj)
 {
 	std::cout << "[Form] Copy assignment operator has been called!" << std::endl;
-	if (this != &obj)
-	{
-		this->_isSigned = obj._isSigned;
-	}
+	this->_isSigned = obj._isSigned;
 	return (*this);
-}
-
-const char * Form::LowException::what() const throw ()
-{
-	return "The given grade is too low";
-}
-
-const char * Form::HighException::what() const throw ()
-{
-	return "The given grade is too high";
 }
 
 std::string	Form::getName(void) const
@@ -73,7 +60,17 @@ void	Form::beSigned(const Bureaucrat &him)
 	if (him.getGrade() <= this->getGradeToSign())
 		this->_isSigned = true;
 	else
-		throw Form::_GradeTooLowException;
+		throw Form::GradeTooLowException();
+}
+
+const char * Form::GradeTooLowException::what() const throw ()
+{
+	return "The given grade is too low";
+}
+
+const char * Form::GradeTooHighException::what() const throw ()
+{
+	return "The given grade is too high";
 }
 
 std::ostream &operator<< (std::ostream &stream, const Form &obj)

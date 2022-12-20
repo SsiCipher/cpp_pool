@@ -3,9 +3,9 @@ NAME	= formExamples
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 SRCS	= Bureaucrat.cpp \
 		  Form.cpp \
-		  ShrubberyCreationForm.cpp \
-		  RobotomyRequestForm.cpp \
 		  PresidentialPardonForm.cpp \
+		  RobotomyRequestForm.cpp \
+		  ShrubberyCreationForm.cpp\
 		  main.cpp
 
 all: $(NAME)
