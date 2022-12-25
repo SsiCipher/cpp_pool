@@ -4,16 +4,16 @@
 #include <iostream>
 
 template <typename T>
-void iter(const T* arr, unsigned int size, void (*func)(const T&))
+void iter(const T* arr, size_t size, void (*func)(const T&))
 {
-	for (unsigned int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		func(arr[i]);
 }
 
 template <typename T>
-void iter(T* arr, unsigned int size, void (*func)(T&))
+void iter(T* arr, size_t size, void (*func)(T&))
 {
-	for (unsigned int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		func(arr[i]);
 }
 
