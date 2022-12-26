@@ -1,12 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): Form("shrubbery creation", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(void) : Form("shrubbery creation", 145, 137)
 {
 	std::cout << "[ShrubberyCreationForm] Default constructor has been called!" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target): Form("shrubbery creation", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", 145, 137)
 {
 	std::cout << "[ShrubberyCreationForm] Constructor has been called!" << std::endl;
 	this->_target = target;
@@ -17,7 +17,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << "[ShrubberyCreationForm] Destructor has been called!" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj): Form(obj)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : Form(obj)
 {
 	std::cout << "[ShrubberyCreationForm] Copy constructor has been called!" << std::endl;
 	*this = obj;
@@ -30,7 +30,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (this->getIsSigned() && executor.getGrade() <= this->getGradeToExec())
 	{
@@ -55,6 +55,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 			shrubberyFile << "       |.|        | |         | |" << std::endl;
 			shrubberyFile << "__._ \\/ ._\\//_/__/  ,\\_//__\\_/.  \\_//__/_" << std::endl;
 		}
+		shrubberyFile.close();
 	}
 	else
 		throw Form::GradeTooLowException();

@@ -1,83 +1,81 @@
-#include <iostream>
+#include "classes.hpp"
 
-class Base
+Base *generate(void)
 {
-    public:
-        virtual ~Base(void) {};
-};
+	int n = time(0) % 3;
 
-class A: public Base
-{
-	public:
-		~A() {};
-};
-
-class B: public Base
-{
-	public:
-		~B() {};
-};
-
-class C: public Base
-{
-	public:
-		~C() {};
-};
-
-Base* generate(void)
-{
-    // generate random int
-    // if 1 <= n < 3 => return (new A())
-    // if 3 <= n < 6 => return (new B())
-    // if 3 <= n < 9 => return (new C())
-    return (new A());
+	if (n == 0)
+		return (new A());
+	else if (n == 1)
+		return (new B());
+	else if (n == 2)
+		return (new C());
+	return (NULL);
 }
 
-void identify(Base* p)
+void identify(Base *p)
 {
-    A *a = dynamic_cast<A *>(p);
-    if (a)
-    {
-        std::cout << "A" << std::endl;
-        return ;
-    }
-    B* b = dynamic_cast<B *>(p);
-    if (b)
-    {
-        std::cout << "B" << std::endl;
-        return ;
-    }
-    C *c = dynamic_cast<C *>(p);
-    if (c)
-    {
-        std::cout << "C" << std::endl;
-        return ;
-    }
+	A *a = dynamic_cast<A *>(p);
+	if (a)
+	{
+		std::cout << "A" << std::endl;
+		return;
+	}
+	B *b = dynamic_cast<B *>(p);
+	if (b)
+	{
+		std::cout << "B" << std::endl;
+		return;
+	}
+	C *c = dynamic_cast<C *>(p);
+	if (c)
+	{
+		std::cout << "C" << std::endl;
+		return;
+	}
+	std::cout << "Invalid Class Type" << std::endl;
 }
 
-void identify(Base& p)
+void identify(Base &p)
 {
-    try
-    {
-        dynamic_cast<A &>(p);
-        std::cout << "A" << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        try
-        {
-            dynamic_cast<B &>(p);
-            std::cout << "B" << std::endl;
-        }
-        catch(const std::exception& e)
-        {
-            std::cout << "C" << std::endl;
-        }
-        
-    }
+	try
+	{
+		A &a = dynamic_cast<A &>(p);
+		(void)a;
+		std::cout << "A" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		try
+		{
+			B &b = dynamic_cast<B &>(p);
+			(void)b;
+			std::cout << "B" << std::endl;
+		}
+		catch (const std::exception &e)
+		{
+			try
+			{
+				C &c = dynamic_cast<C &>(p);
+				(void)c;
+				std::cout << "C" << std::endl;
+			}
+			catch (const std::exception &e)
+			{
+				std::cout << "Invalid Class Type" << std::endl;
+			}
+		}
+	}
 }
 
 int main(void)
 {
-    return (0);
+	Base invalid;
+	Base *random = generate();
+
+	identify(invalid);
+	identify(&invalid);
+	identify(random);
+	identify(*random);
+	return (0);
 }

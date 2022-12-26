@@ -1,19 +1,28 @@
-#include "Base.hpp"
+#include <iostream>
 
-class A: public Base
+class Base
 {
 	public:
-		~A();
+		virtual ~Base(void) {};
 };
 
-class B: public Base
+class A : public Base
 {
 	public:
-		~B();
+		~A() {};
 };
 
-class C: public Base
+class B : public Base
 {
 	public:
-		~C();
+		~B() {};
 };
+
+class C : public Base
+{
+	public:
+		~C() {};
+};
+
+void identify(Base *p);
+void identify(Base &p);

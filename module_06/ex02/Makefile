@@ -1,11 +1,11 @@
 COMP	= c++
-NAME	= serialize
+NAME	= identify
 SRCS	= main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
+$(NAME): $(SRCS) classes.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
