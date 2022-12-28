@@ -1,6 +1,6 @@
 COMP	= c++
-NAME	= convert
-SRCS	= main.cpp
+NAME	= span
+SRCS	= main.cpp Span.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
