@@ -1,5 +1,5 @@
 COMP	= c++
-NAME	= convert
+NAME	= stack
 SRCS	= main.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
