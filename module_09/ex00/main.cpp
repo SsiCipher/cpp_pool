@@ -1,8 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-#define DEBUG(X) (std::cout << X << std::endl)
-
-bool is_date_valid(std::string date)
+bool	is_date_valid(std::string date)
 {
 	std::string::size_type start = 0;
 	std::string::size_type pos = -1;
@@ -21,7 +19,7 @@ bool is_date_valid(std::string date)
 	return (true);
 }
 
-void trim_str(std::string &str)
+void	trim_str(std::string &str)
 {
 	size_t s;
 	size_t e;
@@ -34,7 +32,7 @@ void trim_str(std::string &str)
 	str.erase(0, s);
 }
 
-bool is_valid_value(std::string value)
+bool	is_valid_value(std::string value)
 {
 	double numeric_value;
 
@@ -44,12 +42,14 @@ bool is_valid_value(std::string value)
 	return (numeric_value > 0 && numeric_value <= 1000);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	std::ifstream input;
-	std::ifstream data_file;
-	std::string input_line;
-	size_t separator_pos;
+	std::ifstream	input;
+	std::ifstream	data_file;
+	std::string		input_line;
+	size_t			separator_pos;
+	std::string	date;
+	std::string value;
 	std::map<std::string, double> data;
 	std::map<std::string, double>::iterator lowest_er;
 
@@ -71,9 +71,6 @@ int main(int argc, char *argv[])
 			}
 		}
 		data_file.close();
-
-		std::string date;
-		std::string value;
 
 		input.open(argv[1]);
 		if (input.fail())
@@ -102,7 +99,6 @@ int main(int argc, char *argv[])
 					else
 					{
 						lowest_er = data.upper_bound(date);
-						// std::cout << "Nearest Date: " << lowest_er->first << std::endl;
 						std::cout << date << " => " << value << " = " << (--lowest_er)->second * atof(value.c_str()) << std::endl;
 					}
 				}
