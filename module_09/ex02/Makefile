@@ -1,11 +1,11 @@
 COMP	= c++
-NAME	= rpn
-SRCS	= main.cpp RPN.cpp
+NAME	= pmergeme
+SRCS	= main.cpp PmergeMe.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRCS) RPN.hpp
+$(NAME): $(SRCS) PmergeMe.hpp
 	$(COMP) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
