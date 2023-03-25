@@ -19,5 +19,6 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj)
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj)
 {
 	std::cout << "[BitcoinExchange] Copy assignment operator has been called!" << std::endl;
+	(void)obj;
 	return (*this);
 }

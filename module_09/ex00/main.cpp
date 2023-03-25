@@ -42,10 +42,31 @@ bool	is_valid_value(std::string value)
 	return (numeric_value > 0 && numeric_value <= 1000);
 }
 
+void	read_db(std::map<std::string, double> &data)
+{
+	std::ifstream	data_file;
+	std::string		input_line;
+	size_t			separator_pos;
+
+	data_file.open("./data.csv");
+	if (data_file.fail())
+		std::cerr << "Error: could not open data file." << std::endl;
+	else
+	{
+		std::getline(data_file, input_line);
+		while (std::getline(data_file, input_line))
+		{
+			separator_pos = input_line.find(',');
+			if (separator_pos != std::string::npos)
+				data[input_line.substr(0, separator_pos)] = atof(input_line.substr(separator_pos + 1).c_str());
+		}
+	}
+	data_file.close();
+}
+
 int	main(int argc, char *argv[])
 {
 	std::ifstream	input;
-	std::ifstream	data_file;
 	std::string		input_line;
 	size_t			separator_pos;
 	std::string	date;
@@ -54,23 +75,10 @@ int	main(int argc, char *argv[])
 	std::map<std::string, double>::iterator lowest_er;
 
 	if (argc != 2)
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cerr << "Error: invalid arguments." << std::endl;
 	else
 	{
-		data_file.open("./data.csv");
-		if (data_file.fail())
-			std::cerr << "Error: could not open data file." << std::endl;
-		else
-		{
-			std::getline(data_file, input_line);
-			while (std::getline(data_file, input_line))
-			{
-				separator_pos = input_line.find(',');
-				if (separator_pos != std::string::npos)
-					data[input_line.substr(0, separator_pos)] = atof(input_line.substr(separator_pos + 1).c_str());
-			}
-		}
-		data_file.close();
+		read_db(data);
 
 		input.open(argv[1]);
 		if (input.fail())
