@@ -32,7 +32,7 @@ void	trim_str(std::string &str)
 	str.erase(0, s);
 }
 
-bool	is_valid_value(std::string value)
+bool	is_value_valid(std::string value)
 {
 	double numeric_value;
 
@@ -98,7 +98,7 @@ int	main(int argc, char *argv[])
 				}
 				if (!is_date_valid(date))
 					std::cout << "Error: bad input => " << date << std::endl;
-				else if (!is_valid_value(value))
+				else if (!is_value_valid(value))
 					std::cout << "Error: invalid value" << std::endl;
 				else
 				{
