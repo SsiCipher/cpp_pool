@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
+#include <deque>
 
 class PmergeMe
 {
@@ -14,5 +14,8 @@ public:
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator=(const PmergeMe &obj);
 };
+
+void merge_insert_sort(std::vector<int> &arr, size_t l, size_t r);
+void merge_insert_sort(std::deque<int> &arr, size_t l, size_t r);
 
 #endif

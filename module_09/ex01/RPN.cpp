@@ -19,8 +19,6 @@ RPN::RPN(const RPN &obj)
 RPN &RPN::operator=(const RPN &obj)
 {
 	std::cout << "[RPN] Copy assignment operator has been called!" << std::endl;
-	if (this != &obj)
-	{
-	}
+	(void)obj;
 	return (*this);
 }
