@@ -1,6 +1,6 @@
 COMP	= c++
 NAME	= btc
-SRCS	= main.cpp BitcoinExchange.cpp
+SRCS	= main_re.cpp BitcoinExchange.cpp
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)

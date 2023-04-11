@@ -68,43 +68,12 @@ void read_db(data_map &data)
 	data_file.close();
 }
 
-void print_exchange_rate(data_map data, std::string input_line)
-{
-	std::string date, value;
-	data_map::iterator closest_date;
-	size_t separator_pos;
-
-	separator_pos = input_line.find('|');
-	date = input_line.substr(0, separator_pos);
-	trim_str(date);
-	if (separator_pos != std::string::npos)
-	{
-		value = input_line.substr(separator_pos + 1);
-		trim_str(value);
-	}
-	if (!is_date_valid(date))
-		std::cout << "Error: bad input => " << date << std::endl;
-	else if (!is_value_valid(value))
-		std::cout << "Error: invalid value" << std::endl;
-	else
-	{
-		if (data.count(date) != 0)
-			std::cout << date << " => " << value << " = " << data[date] * atof(value.c_str()) << std::endl;
-		else
-		{
-			closest_date = data.upper_bound(date);
-			if (closest_date != data.begin())
-				closest_date--;
-			std::cout << date << " => " << value << " = " << closest_date->second * atof(value.c_str()) << std::endl;
-		}
-	}
-}
-
 int main(int argc, char *argv[])
 {
-	data_map data;
-	std::ifstream input;
-	std::string input_line;
+	data_map		data;
+	std::ifstream	input;
+	std::string		input_line;
+	BitcoinExchange	be;
 
 	if (argc != 2)
 		std::cerr << "Error: invalid arguments." << std::endl;

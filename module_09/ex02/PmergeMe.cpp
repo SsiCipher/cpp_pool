@@ -19,9 +19,7 @@ PmergeMe::PmergeMe(const PmergeMe &obj)
 PmergeMe &PmergeMe::operator=(const PmergeMe &obj)
 {
 	std::cout << "[PmergeMe] Copy assignment operator has been called!" << std::endl;
-	if (this != &obj)
-	{
-	}
+	(void)obj;
 	return (*this);
 }
 
@@ -140,4 +138,3 @@ void merge_insert_sort(std::deque<int> &arr, size_t l, size_t r)
 		}
 	}
 }
-
