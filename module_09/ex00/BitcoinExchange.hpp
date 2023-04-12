@@ -10,9 +10,14 @@ class BitcoinExchange
 {
 	public:
 		typedef std::map<std::string, double>	t_data;
-	
+
 	private:
-		t_data _data;
+		t_data	_data;
+
+		bool	_is_date_valid(std::string date);
+		bool	_is_value_valid(std::string value);
+		void	_trim_str(std::string &str);
+		void	_print_exchange_rate(std::string input_line);
 
 	public:
 		BitcoinExchange(void);
@@ -21,12 +26,7 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &obj);
 		BitcoinExchange &operator=(const BitcoinExchange &obj);
 
-		bool	_is_date_valid(std::string date);
-		bool	_is_value_valid(std::string value);
-		void	read_data(void);
-		void	_trim_str(std::string &str);
-		void	_print_exchange_rate(std::string input_line);
-		void	display_exchange(std::string input_file_name);
+		void	display(std::string input_file_name);
 };
 
 #endif
