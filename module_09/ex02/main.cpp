@@ -10,6 +10,27 @@ bool is_str_digit(std::string str)
 	return (!str.empty());
 }
 
+template <typename T>
+void	print_container(std::string label, T &container)
+{
+	typename T::iterator it;
+
+	std::cout << label << ": ";
+	for (it = container.begin(); it != container.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+void	sort_containers(std::vector<int> &vector, clock_t &vector_time, std::deque<int> &deque, clock_t &deque_time)
+{
+	vector_time = clock();
+	merge_insert_sort(vector, 0, vector.size() - 1);
+	vector_time = clock() - vector_time;
+	deque_time = clock();
+	merge_insert_sort(deque, 0, deque.size() - 1);
+	deque_time = clock() - deque_time;
+}
+
 int main(int argc, char const *argv[])
 {
 	std::vector<int>	vector;
@@ -25,7 +46,7 @@ int main(int argc, char const *argv[])
 		{
 			if (!is_str_digit(argv[i]))
 			{
-				std::cerr << "Error: invalid arguments" << std::endl;
+				std::cerr << "\033[1;31mError:\033[0m invalid arguments" << std::endl;
 				return (1);
 			}
 			int n = atoi(argv[i]);
@@ -33,22 +54,11 @@ int main(int argc, char const *argv[])
 			deque.push_back(n);
 		}
 
-		std::cout << "Before: ";
-		for (size_t i = 0; i < vector.size(); i++)
-			std::cout << vector[i] << " ";
-		std::cout << std::endl;
+		print_container("Before", vector);
 
-		vector_time = clock();
-		merge_insert_sort(vector, 0, vector.size() - 1);
-		vector_time = clock() - vector_time;
-		deque_time = clock();
-		merge_insert_sort(deque, 0, deque.size() - 1);
-		deque_time = clock() - deque_time;
+		sort_containers(vector, vector_time, deque, deque_time);
 
-		std::cout << "After: ";
-		for (size_t i = 0; i < vector.size(); i++)
-			std::cout << vector[i] << " ";
-		std::cout << std::endl;
+		print_container("After", vector);
 
 		std::cout << "Time to process a range of " << vector.size() << " elements with std::vector : " << std::fixed << (double)((double)vector_time / CLOCKS_PER_SEC) << "s" << std::endl;
 		std::cout << "Time to process a range of " << deque.size() << " elements with std::deque : " << std::fixed << (double)((double)deque_time / CLOCKS_PER_SEC) << "s" << std::endl;

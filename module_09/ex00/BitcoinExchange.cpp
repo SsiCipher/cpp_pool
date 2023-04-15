@@ -8,7 +8,7 @@ BitcoinExchange::BitcoinExchange(void)
 
 	data_file.open("./data/data.csv");
 	if (data_file.fail())
-		std::cerr << "Error: could not open data file." << std::endl;
+		std::cerr << "\033[1;31mError:\033[0m could not open data file." << std::endl;
 	else
 	{
 		std::getline(data_file, input_line);
@@ -30,7 +30,7 @@ BitcoinExchange::BitcoinExchange(std::string data_file_name)
 
 	data_file.open(data_file_name);
 	if (data_file.fail())
-		std::cerr << "Error: could not open data file." << std::endl;
+		std::cerr << "\033[1;31mError:\033[0m could not open data file." << std::endl;
 	else
 	{
 		std::getline(data_file, input_line);
@@ -109,6 +109,11 @@ void	BitcoinExchange::_print_exchange_rate(std::string input_line)
 	std::string			date, value;
 	t_data::iterator	closest_date;
 
+	if (input_line.empty())
+	{
+		std::cout << "\033[1;31mError:\033[0m empty line" << std::endl;
+		return ;
+	}
 	separator_pos = input_line.find('|');
 	date = input_line.substr(0, separator_pos);
 	_trim_str(date);
@@ -118,17 +123,17 @@ void	BitcoinExchange::_print_exchange_rate(std::string input_line)
 		_trim_str(value);
 	}
 	if (!_is_date_valid(date))
-		std::cout << "Error: invalid date => " << date << std::endl;
+		std::cout << "\033[1;31mError:\033[0m invalid date => " << date << std::endl;
 	else if (!_is_value_valid(value))
-		std::cout << "Error: invalid value => " << value << std::endl;
+		std::cout << "\033[1;31mError:\033[0m invalid value => " << value << std::endl;
 	else
 	{
 		if (_data.count(date) != 0)
-			std::cout << date << " => " << value << " = " << _data[date] * atof(value.c_str()) << std::endl;
+			std::cout << date << " => " << value << " = " << std::fixed << _data[date] * atof(value.c_str()) << std::endl;
 		else
 		{
 			closest_date = _data.upper_bound(date) == _data.begin() ? _data.upper_bound(date) : --_data.upper_bound(date);
-			std::cout << date << " => " << value << " = " << closest_date->second * atof(value.c_str()) << std::endl;
+			std::cout << date << " => " << value << " = " << std::fixed << closest_date->second * atof(value.c_str()) << std::endl;
 		}
 	}
 }
@@ -140,7 +145,7 @@ void	BitcoinExchange::display(std::string input_file_name)
 
 	input.open(input_file_name);
 	if (input.fail())
-		std::cerr << "Error: could not open input file." << std::endl;
+		std::cerr << "\033[1;31mError:\033[0m could not open input file." << std::endl;
 	else
 	{
 		std::getline(input, input_line);

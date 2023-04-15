@@ -5,7 +5,7 @@ int	main(int argc, char const *argv[])
 	RPN	rpn_calculator;
 
 	if (argc != 2)
-		std::cerr << "Error: Invalid arguments" << std::endl;
+		std::cerr << "\033[1;31mError:\033[0m Invalid arguments" << std::endl;
 	else
 	{
 		try
@@ -18,6 +18,5 @@ int	main(int argc, char const *argv[])
 			std::cerr << err.what() << std::endl;
 		}
 	}
-
 	return (0);
 }

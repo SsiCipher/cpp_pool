@@ -15,7 +15,7 @@ RPN::RPN(const RPN &obj)
 
 RPN &RPN::operator=(const RPN &obj)
 {
-	(void)obj;
+	_stack = obj._stack;
 	return (*this);
 }
 
@@ -39,6 +39,8 @@ bool	RPN::_is_str_digit(std::string str)
 
 void	RPN::_do_operation(t_stack &stack, int a, int b, char op)
 {
+	if (op == '/' && b == 0)
+		throw std::invalid_argument("\033[1;31mError:\033[0m division by zero is invalid");
 	switch (op)
 	{
 		case '+':
@@ -58,47 +60,42 @@ void	RPN::_do_operation(t_stack &stack, int a, int b, char op)
 	}
 }
 
-bool	RPN::_is_operation(std::string chr)
+bool	RPN::_is_operation(char op_char)
 {
-	return (chr.size() == 1 && (chr[0] == '+' || chr[0] == '-' || chr[0] == '*' || chr[0] == '/'));
+	return (op_char == '+' || op_char == '-' || op_char == '*' || op_char == '/');
 }
 
 void	RPN::eval(std::string expr)
 {
-	int		a, b;
-	size_t	pos = 0, start = 0;
+	int	a, b;
 
 	_trim_str(expr);
-
-	while ((pos = expr.find(' ', start)) && start != expr.size())
+	if (expr.empty())
+		throw std::invalid_argument("\033[1;31mError:\033[0m empty argument");
+	for (size_t i = 0; i < expr.size(); i++)
 	{
-		if (!_is_operation(expr.substr(start, pos - start)))
+		if (expr[i] == ' ')
+			continue;
+		if (_is_operation(expr[i]))
 		{
-			if (!_is_str_digit(expr.substr(start, pos - start)))
-				throw std::invalid_argument("Error: non-numeric arguments");
-			_stack.push(atoi(expr.substr(start, pos - start).c_str()));
-		}
-		else
-		{
-			if (_stack.size() != 2)
-				throw std::invalid_argument("Error: too many operands");
 			a = _stack.top();
 			_stack.pop();
 			b = _stack.top();
 			_stack.pop();
-			_do_operation(_stack, a, b, expr.substr(start, pos - start)[0]);
+			_do_operation(_stack, b, a, expr[i]);
 		}
-		start = pos + 1;
-		while (expr[start] == ' ')
-			start++;
-		if (pos == std::string::npos)
-			break;
+		else
+		{
+			if (!isdigit(expr[i]))
+				throw std::invalid_argument("\033[1;31mError:\033[0m non-numeric arguments");
+			_stack.push(expr[i] - '0');
+		}
 	}
 }
 
 void	RPN::display_result()
 {
 	if (_stack.size() != 1)
-		throw std::invalid_argument("Error: too many operands");
-	std::cout << _stack.top() << std::endl;
+		throw std::invalid_argument("\033[1;31mError:\033[0m invalid expression");
+	std::cout << "Result: [ " << _stack.top() << " ]" << std::endl;
 }
